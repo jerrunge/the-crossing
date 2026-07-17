@@ -154,6 +154,45 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
   svg.live .net-link{animation:none}
   .course{max-width:240px;transition:none}
 }
+
+/* ===== edit mode — activated by #edit in URL, invisible otherwise ===== */
+body.editing .r{opacity:1!important;transform:none!important;transition:none}
+body.editing .course{max-width:240px}
+body.editing [contenteditable]{cursor:text;transition:outline .14s ease}
+body.editing [contenteditable]:hover{outline:1px dashed var(--slate-l);outline-offset:6px}
+body.editing [contenteditable]:focus{outline:2px solid var(--sound);outline-offset:6px}
+.edit-ui{position:fixed;top:1.2rem;right:1.2rem;z-index:100;display:flex;gap:.5rem;align-items:center;
+  font-family:var(--mono);background:var(--dusk-2);padding:.5rem .6rem .5rem .9rem;
+  border:1px solid var(--hair);backdrop-filter:blur(6px)}
+.edit-status{font-size:.72rem;letter-spacing:.06em;text-transform:lowercase;color:var(--slate-l);
+  padding-right:.6rem;border-right:1px solid var(--hair)}
+.edit-status.unsaved{color:var(--sound)}
+.edit-save-path{font-family:var(--mono);font-size:.66rem;color:var(--slate-l);max-width:180px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--hair)}
+.edit-save-path:empty{display:none}
+.edit-btn{padding:.45rem .9rem;background:var(--slate);color:var(--paper);border:none;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:lowercase;
+  cursor:pointer;transition:background .15s}
+.edit-btn:hover{background:var(--slate-l)}
+.edit-btn-secondary{background:transparent;color:var(--slate-l);border:1px solid var(--hair)}
+.edit-btn-secondary:hover{background:rgba(125,147,161,.10);color:var(--paper)}
+.edit-help{position:fixed;bottom:1.2rem;right:1.2rem;z-index:100;font-family:var(--mono);
+  font-size:.66rem;color:var(--slate-l);background:var(--dusk-2);padding:.7rem .9rem;
+  border:1px solid var(--hair);backdrop-filter:blur(6px);display:flex;flex-direction:column;
+  gap:.42rem;line-height:1;letter-spacing:.04em}
+.edit-help-row{display:flex;align-items:center;gap:.6rem}
+.edit-help kbd{display:inline-block;background:rgba(125,147,161,.14);padding:2px 6px;
+  border:1px solid var(--hair);font-family:var(--mono);font-size:.66rem;min-width:2.4em;
+  text-align:center;color:var(--paper)}
+.edit-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--slate);
+  color:var(--paper);padding:1.1rem 2rem;font-family:var(--mono);font-size:.82rem;
+  letter-spacing:.06em;text-transform:lowercase;z-index:200;
+  animation:toastIn .22s cubic-bezier(.2,.7,.2,1)}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,-46%)}to{opacity:1;transform:translate(-50%,-50%)}}
+@media(max-width:700px){
+  .edit-help{display:none}
+  .edit-ui{left:1.2rem;flex-wrap:wrap;justify-content:flex-end}
+}
 </style>
 </head>
 <body>
@@ -232,7 +271,7 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
   <div class="course r s4"></div>
   <a class="cta-slab r s5" href="index.html#intake">Start the conversation →</a>
   <p class="closer r s5">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
-  <div class="foot"><a href="index.html">jeremyrunge.com</a></div>
+  <div class="foot"><a href="index.html">jeremyrunge.com</a> · <a href="#edit">edit</a></div>
 </section>
 
 <div class="net-detail" id="netDetail">
@@ -371,6 +410,212 @@ function tick(){
 }
 addEventListener("scroll",tick,{passive:true});
 setInterval(tick,250); tick();
+
+/* ---------- edit mode (#edit in URL) ---------- */
+let fileHandle=null,unsavedChanges=false;
+if(location.hash==="#edit")initEditMode();
+addEventListener("hashchange",()=>{
+  const want=location.hash==="#edit",is=document.body.classList.contains("editing");
+  if(want!==is){
+    if(unsavedChanges&&!confirm("You have unsaved changes. Discard them?")){
+      history.replaceState(null,"",location.pathname+location.search+(is?"#edit":""));
+      return;
+    }
+    location.reload();
+  }
+});
+function initEditMode(){
+  document.body.classList.add("editing");
+  /* SVG network + detail card excluded: their text lives in the domains[] data, not markup */
+  const sels=[".micro",".d1",".d2",".w",".mline",".oneliner",".moves div",".after",
+    ".guide .name",".guide .cred",".terms span",".cta-ghost",".cta-slab",".closer",
+    ".afford",".strip span",".foot a"];
+  const seen=new Set();
+  sels.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{
+    if(seen.has(el)||el.closest(".net-detail"))return;
+    seen.add(el);
+    el.setAttribute("contenteditable","true");
+    el.spellcheck=false;
+    el.addEventListener("input",markUnsaved);
+  }));
+  document.addEventListener("keydown",handleEditKeys,true);
+  injectEditUI();
+  addEventListener("beforeunload",e=>{
+    if(unsavedChanges){e.preventDefault();e.returnValue=""}
+  });
+}
+function markUnsaved(){
+  if(!unsavedChanges){
+    unsavedChanges=true;
+    const s=document.getElementById("editStatus");
+    if(s){s.textContent="• Unsaved";s.classList.add("unsaved")}
+  }
+}
+function markSaved(){
+  unsavedChanges=false;
+  const s=document.getElementById("editStatus");
+  if(s){s.textContent="Edit mode";s.classList.remove("unsaved")}
+}
+function handleEditKeys(e){
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="s"){
+    e.preventDefault();e.stopPropagation();
+    if(e.shiftKey)saveAsPage();else savePage();
+    return;
+  }
+  if(!e.target.isContentEditable)return;
+  if(e.key==="Escape"){e.target.blur();return}
+  if(e.key==="Enter"&&!e.shiftKey&&!e.metaKey&&!e.ctrlKey){
+    e.preventDefault();
+    document.execCommand("insertHTML",false,"<br>");
+    markUnsaved();
+    return;
+  }
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="i"){e.preventDefault();toggleWrap("em");return}
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="b"){e.preventDefault();toggleWrap("b");return}
+}
+function toggleWrap(tagName){
+  const sel=getSelection();
+  if(!sel.rangeCount)return;
+  const range=sel.getRangeAt(0);
+  if(range.collapsed)return;
+  let node=range.commonAncestorContainer;
+  while(node&&node.nodeType===3)node=node.parentNode;
+  let walker=node,existing=null;
+  while(walker&&!walker.isContentEditable&&walker.tagName?.toLowerCase()!==tagName){
+    walker=walker.parentNode;
+    if(!walker)break;
+  }
+  if(walker&&walker.tagName?.toLowerCase()===tagName)existing=walker;
+  if(existing){
+    const parent=existing.parentNode;
+    while(existing.firstChild)parent.insertBefore(existing.firstChild,existing);
+    parent.removeChild(existing);
+    sel.removeAllRanges();
+    markUnsaved();
+    return;
+  }
+  const wrapper=document.createElement(tagName);
+  try{range.surroundContents(wrapper)}
+  catch(err){
+    const contents=range.extractContents();
+    wrapper.appendChild(contents);
+    range.insertNode(wrapper);
+  }
+  sel.removeAllRanges();
+  const nr=document.createRange();
+  nr.selectNodeContents(wrapper);
+  sel.addRange(nr);
+  markUnsaved();
+}
+function injectEditUI(){
+  const ui=document.createElement("div");
+  ui.className="edit-ui";
+  ui.innerHTML='<div class="edit-status" id="editStatus">Edit mode</div>'+
+    '<div class="edit-save-path" id="editSavePath"></div>'+
+    '<button class="edit-btn" id="editSaveBtn" title="Save (⌘S) — pick existing file to overwrite">Save</button>'+
+    '<button class="edit-btn edit-btn-secondary" id="editSaveAsBtn" title="Save As (⌘⇧S)">Save As</button>'+
+    '<button class="edit-btn edit-btn-secondary" id="editExitBtn" title="Exit edit mode">Exit</button>';
+  document.body.appendChild(ui);
+  document.getElementById("editSaveBtn").addEventListener("click",savePage);
+  document.getElementById("editSaveAsBtn").addEventListener("click",saveAsPage);
+  document.getElementById("editExitBtn").addEventListener("click",()=>{
+    if(unsavedChanges&&!confirm("You have unsaved changes. Exit anyway?"))return;
+    location.hash="";
+  });
+  const help=document.createElement("div");
+  help.className="edit-help";
+  help.innerHTML='<div class="edit-help-row"><kbd>Enter</kbd> line break</div>'+
+    '<div class="edit-help-row"><kbd>⌘I</kbd> italic accent</div>'+
+    '<div class="edit-help-row"><kbd>⌘B</kbd> bold ink</div>'+
+    '<div class="edit-help-row"><kbd>⌘S</kbd> save</div>'+
+    '<div class="edit-help-row"><kbd>⌘⇧S</kbd> save as</div>'+
+    '<div class="edit-help-row"><kbd>Esc</kbd> defocus</div>';
+  document.body.appendChild(help);
+}
+async function savePage(){
+  const html=serializePage();
+  if(window.showOpenFilePicker){
+    try{
+      if(!fileHandle){
+        const handles=await showOpenFilePicker({
+          types:[{description:"HTML",accept:{"text/html":[".html"]}}],
+          multiple:false
+        });
+        fileHandle=handles[0];
+        const perm=await fileHandle.requestPermission({mode:"readwrite"});
+        if(perm!=="granted"){flashToast("Permission denied");fileHandle=null;return}
+        updateSavePath();
+      }
+      const w=await fileHandle.createWritable();
+      await w.write(html);await w.close();
+      markSaved();flashToast("Saved");
+      return;
+    }catch(err){
+      if(err.name==="AbortError")return;
+      console.warn("FS Access API failed, falling back to download",err);
+    }
+  }
+  downloadFallback(html);
+}
+async function saveAsPage(){
+  const html=serializePage();
+  if(window.showSaveFilePicker){
+    try{
+      const handle=await showSaveFilePicker({
+        suggestedName:(fileHandle&&fileHandle.name)||"fortify-options.html",
+        types:[{description:"HTML",accept:{"text/html":[".html"]}}]
+      });
+      fileHandle=handle;
+      updateSavePath();
+      const w=await fileHandle.createWritable();
+      await w.write(html);await w.close();
+      markSaved();flashToast("Saved");
+      return;
+    }catch(err){
+      if(err.name==="AbortError")return;
+      console.warn("FS Access API failed, falling back to download",err);
+    }
+  }
+  downloadFallback(html);
+}
+function downloadFallback(html){
+  const blob=new Blob([html],{type:"text/html"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download="fortify-options.html";a.click();
+  URL.revokeObjectURL(url);
+  markSaved();flashToast("Downloaded");
+}
+function updateSavePath(){
+  const el=document.getElementById("editSavePath");
+  if(el){el.textContent=fileHandle?fileHandle.name:"";el.title=el.textContent}
+}
+function flashToast(text){
+  const t=document.createElement("div");
+  t.className="edit-toast";t.textContent=text;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),1800);
+}
+function serializePage(){
+  /* Unlike the deck's serializer, this one keeps U+00A0: the line-break gluing is authored &nbsp;. */
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelectorAll("[contenteditable]").forEach(el=>{
+    el.removeAttribute("contenteditable");el.removeAttribute("spellcheck");
+  });
+  clone.querySelectorAll(".edit-ui,.edit-help,.edit-toast").forEach(el=>el.remove());
+  const b=clone.querySelector("body");
+  if(b)b.classList.remove("editing");
+  clone.querySelectorAll(".vis").forEach(el=>el.classList.remove("vis"));
+  const s=clone.querySelector("#netSvg");
+  if(s){s.innerHTML="";s.classList.remove("live")}
+  const nd=clone.querySelector(".net-detail");
+  if(nd)nd.classList.remove("show");
+  ["ndCode","ndName","ndBody"].forEach(id=>{
+    const el=clone.querySelector("#"+id);
+    if(el)el.textContent="";
+  });
+  return "<!DOCTYPE html>\n"+clone.outerHTML;
+}
 </script>
 </body>
 </html>
