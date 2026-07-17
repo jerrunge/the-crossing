@@ -24,8 +24,8 @@ a{color:inherit;text-decoration:none}
 
 /* chrome — bare strip, scroll-aware like nav.float */
 .strip{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
-  padding:16px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
-  color:rgba(239,238,231,.85);text-shadow:0 1px 8px rgba(20,24,30,.5);pointer-events:none;transition:color .3s}
+  padding:16px 20px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:lowercase;
+  color:rgba(239,238,231,.92);text-shadow:0 1px 8px rgba(20,24,30,.5);pointer-events:none;transition:color .3s}
 .strip a{pointer-events:auto}
 .strip a:hover{color:var(--sound)}
 body.light-chrome .strip{color:var(--slate);text-shadow:none}
@@ -36,8 +36,8 @@ body.light-chrome .strip a:hover{color:var(--land)}
 .hero .img{position:absolute;inset:0;background-size:cover;background-position:center 38%;
   background-image:url('C-photos/zermatt-2400.jpg')}
 .hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,30,.88) 0%,rgba(20,24,30,.56) 34%,rgba(20,24,30,.50) 74%,rgba(20,24,30,.64) 100%)}
-.hero .databar{position:absolute;top:64px;left:20px;font-family:var(--mono);font-size:10.5px;
-  color:rgba(239,238,231,.72);text-transform:lowercase;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.hero .databar{position:absolute;top:64px;left:20px;font-family:var(--mono);font-size:10.5px;font-weight:500;
+  color:rgba(239,238,231,.88);text-transform:lowercase;font-variant-numeric:tabular-nums;letter-spacing:.04em}
 .hero .inner{position:relative;padding:0 20px 30px;max-width:900px}
 .hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;color:var(--paper);
   font-size:clamp(38px,10.5vw,84px);line-height:.97;text-wrap:balance}
@@ -52,15 +52,15 @@ body.light-chrome .strip a:hover{color:var(--land)}
   animation:drawline 1s ease-out .25s both}
 .crossing span{position:absolute;right:-2px;top:-15px;font-family:var(--mono);font-size:9.5px;color:var(--red)}
 @keyframes drawline{from{max-width:0}to{max-width:280px}}
-.herolink{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;
-  color:rgba(239,238,231,.9);text-transform:lowercase;letter-spacing:.05em;cursor:pointer;
-  border-bottom:1px solid rgba(239,238,231,.35);padding-bottom:3px}
+.herolink{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;font-weight:500;
+  color:var(--paper);text-transform:lowercase;letter-spacing:.05em;cursor:pointer;
+  border-bottom:1px solid rgba(239,238,231,.45);padding-bottom:3px}
 .herolink:hover{border-bottom-color:var(--red);color:var(--paper)}
 
 /* ===== sections ===== */
 section{padding:72px 20px}
 .inner-c{max-width:820px;margin:0 auto}
-.kicker{font-family:var(--mono);font-size:11px;color:var(--slate);text-transform:lowercase;
+.kicker{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--slate);text-transform:lowercase;
   letter-spacing:.05em;margin-bottom:18px}
 .d1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.02;color:var(--land);
   font-size:clamp(2.1rem,6vw,4rem);text-wrap:balance}
@@ -68,8 +68,9 @@ section{padding:72px 20px}
   font-size:clamp(1.7rem,4.6vw,3rem);text-wrap:balance}
 .w{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--body);
   font-size:clamp(1.1rem,2.3vw,1.45rem);line-height:1.5;text-wrap:balance}
-.mline{font-family:var(--mono);font-size:clamp(.72rem,1.4vw,.85rem);letter-spacing:.08em;
+.mline{font-family:var(--mono);font-size:clamp(.76rem,1.4vw,.85rem);font-weight:500;letter-spacing:.08em;
   color:var(--slate);line-height:2.1;text-transform:lowercase}
+.mline b{font-weight:500;color:var(--land)}
 
 /* reveals — site motion: .5s, 12px */
 .r{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
@@ -78,11 +79,11 @@ section{padding:72px 20px}
 
 /* ===== the model — dusk band ===== */
 .dusk-band{background:var(--dusk);color:var(--paper);padding:72px 20px}
-.dusk-band .kicker{color:var(--slate-l)}
+.dusk-band .kicker{color:var(--sound)}
 .net-wrap{width:100%;max-width:640px;margin:0 auto;aspect-ratio:1;position:relative}
 .net-wrap svg{width:100%;height:100%;overflow:visible;display:block}
-.afford{margin-top:18px;text-align:center;font-family:var(--mono);font-size:11px;
-  letter-spacing:.16em;color:var(--slate-l);text-transform:lowercase}
+.afford{margin-top:18px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.16em;color:var(--sound);text-transform:lowercase}
 .net-link{stroke:var(--slate-l);stroke-width:.9;opacity:var(--o,.18);fill:none;
   transition:opacity .32s ease,stroke .32s ease}
 .net-link.secondary{stroke-width:1.6;--o:.4}
@@ -95,11 +96,11 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
   transition:fill .28s,stroke .28s,stroke-width .28s}
 .net-node-group:hover .net-node,.net-node-group.hover .net-node{fill:var(--slate);stroke:var(--sound)}
 .net-node-group.connected .net-node{stroke:var(--sound);stroke-width:2}
-.net-code{font-family:var(--mono);font-size:13px;font-weight:500;fill:var(--slate-l);
+.net-code{font-family:var(--mono);font-size:13px;font-weight:500;fill:var(--sound);
   text-anchor:middle;dominant-baseline:middle;pointer-events:none;transition:fill .28s}
 .net-node-group:hover .net-code,.net-node-group.hover .net-code{fill:var(--paper)}
-.net-label{font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;
-  fill:var(--silver);pointer-events:none;transition:opacity .28s}
+.net-label{font-family:var(--serif);font-style:italic;font-weight:500;font-size:16px;
+  fill:var(--paper);fill-opacity:.88;pointer-events:none;transition:opacity .28s}
 .net-wrap.has-hover .net-link:not(.highlight){opacity:.05!important;animation:none}
 .net-wrap.has-hover .net-node-group:not(.hover):not(.connected){opacity:.25}
 @media(max-width:700px){
@@ -116,10 +117,10 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
   transform:translateY(16px);opacity:0;pointer-events:none;transition:opacity .32s,transform .32s;
   box-shadow:0 18px 44px rgba(0,0,0,.5)}
 .net-detail.show{opacity:1;transform:none;pointer-events:auto}
-.net-detail .micro{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:lowercase;
-  color:var(--slate-l);margin-bottom:8px;display:block}
+.net-detail .micro{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:lowercase;
+  color:var(--sound);margin-bottom:8px;display:block}
 .net-detail h4{font-family:var(--disp);font-weight:900;font-size:1.35rem;letter-spacing:-0.02em;margin-bottom:8px}
-.net-detail p{font-family:var(--serif);font-size:.98rem;line-height:1.6;color:var(--silver)}
+.net-detail p{font-family:var(--serif);font-size:1rem;line-height:1.6;color:rgba(239,238,231,.9)}
 .net-detail .close{position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;
   font-family:var(--mono);font-size:.7rem;color:var(--slate-l);letter-spacing:.1em}
 
@@ -147,13 +148,13 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
 .moves{margin:46px 0 30px}
 .moves div{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.12;
   font-size:clamp(2.4rem,7vw,4.6rem)}
-.moves .m1{color:var(--land)}.moves .m2{color:var(--dusk)}.moves .m3{color:var(--slate)}.moves .m4{color:var(--slate-l)}
+.moves .m1{color:var(--land)}.moves .m2{color:var(--land)}.moves .m3{color:var(--slate)}.moves .m4{color:var(--slate)}
 
 /* ===== interstitial — site component ===== */
 .interstitial{position:relative;height:54svh;background-size:cover;background-position:center;padding:0}
 .interstitial .scrim2{position:absolute;inset:0;background:rgba(20,24,30,.28)}
 .interstitial .cap{position:absolute;left:20px;bottom:16px;font-family:var(--mono);
-  font-size:10px;color:rgba(239,238,231,.9);text-transform:lowercase;letter-spacing:.06em}
+  font-size:10.5px;font-weight:500;color:rgba(239,238,231,.95);text-transform:lowercase;letter-spacing:.06em}
 
 /* ===== the terms — paper ===== */
 #close{text-align:center;padding-bottom:0}
@@ -162,10 +163,10 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
 .guide img{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center 20%;
   border:1px solid var(--hairline)}
 .guide .name{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-0.01em;color:var(--land)}
-.guide .cred{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--slate);
+.guide .cred{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--slate);
   text-transform:lowercase;margin-top:5px}
 .terms{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
-.terms span{font-family:var(--mono);font-size:clamp(.74rem,1.5vw,.88rem);letter-spacing:.08em;
+.terms span{font-family:var(--mono);font-size:clamp(.78rem,1.5vw,.88rem);letter-spacing:.08em;
   color:var(--body);text-transform:lowercase}
 .terms b{color:var(--land);font-weight:500}
 .closer{margin:34px 0 0;font-family:var(--serif);font-style:italic;color:var(--body);
@@ -177,8 +178,8 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
 /* ===== giant CTA — site component ===== */
 .big-cta{display:block;text-align:center;background:var(--land);color:var(--paper);
   padding:26px 20px;cursor:pointer;width:100vw;margin:48px calc(50% - 50vw) 0}
-.big-cta .l1{font-family:var(--mono);font-size:10.5px;color:var(--silver);text-transform:lowercase;
-  display:block;margin-bottom:8px}
+.big-cta .l1{font-family:var(--mono);font-size:10.5px;font-weight:500;color:rgba(239,238,231,.8);
+  text-transform:lowercase;display:block;margin-bottom:8px}
 .big-cta .l2{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;font-size:clamp(22px,6vw,34px)}
 
 @media(prefers-reduced-motion:reduce){
@@ -237,7 +238,7 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
 <div class="hero" data-dark>
   <div class="img"></div>
   <div class="scrim"></div>
-  <div class="databar">fortify™ · six months · 1:1</div>
+  <div class="databar">fortify™ · where your becoming is the goal</div>
   <div class="inner">
     <h1><span class="b">Every part of you</span> <span class="b">affects every other&nbsp;part.</span></h1>
     <p class="sub">One person beside&nbsp;you.</p>
@@ -249,12 +250,12 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
 <!-- S2 · the model — dusk band -->
 <section class="dusk-band" data-dark id="model">
   <div class="inner-c">
-    <div class="kicker r">the model · ten domains · twenty-two documented connections</div>
+    <div class="kicker r">our work · strengthening the system · together</div>
     <div class="r s2">
       <div class="net-wrap" id="netWrap">
         <svg viewBox="0 0 800 800" id="netSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
-      <div class="afford">touch any domain</div>
+      <div class="afford">ten domains · twenty-two connections · touch any domain</div>
     </div>
   </div>
 </section>
@@ -262,13 +263,13 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
 <!-- S3 · the cascade — paper -->
 <section id="source">
   <div class="inner-c">
-    <div class="kicker r">the cascade</div>
-    <p class="w r s2">Sustained stress quiets the same axis in every&nbsp;body.</p>
-    <div class="mline r s3">hers · estrogen and progesterone fall<br>
-    his · testosterone drops 15% after one week of short&nbsp;sleep</div>
-    <p class="w r s4">A shame with no source they can&nbsp;name.</p>
-    <h2 class="d1 r s5">It has a source.</h2>
-    <p class="after r s5">The 11pm meeting. Three months in a&nbsp;row.</p>
+    <div class="kicker r">the impact is real</div>
+    <p class="w r s2">Family. Money. Work. Sex.</p>
+    <div class="mline r s3">when these are stressed, the pressures create a hormonal cascade,<br>
+    deep exhaustion, emotional distance, and&nbsp;more</div>
+    <p class="w r s4">The prison walls feel too&nbsp;real.</p>
+    <h2 class="d1 r s5">Alone is not the&nbsp;fix.</h2>
+    <p class="after r s5">You've been giving it all when there's nothing left to&nbsp;give.</p>
   </div>
 </section>
 
@@ -280,7 +281,7 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
     <div class="mline r s3">mind and body worked together · nearly twice the effect<br>
     smd 0.73 · 183 randomized trials · 22,811 people</div>
     <div class="rule r s4"></div>
-    <div class="mline r s4">sexual health · named by 0 of 12 major frameworks · fortify names&nbsp;it</div>
+    <div class="mline r s4">sexual health for example · named by <b>none</b> of 12 other major frameworks · fortify names&nbsp;it</div>
   </div>
 </section>
 
@@ -312,11 +313,11 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
       <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
       <div>
         <div class="name">Jeremy Runge</div>
-        <div class="cred">pacifica, ca · ex-apple · 20 years operating · 60,000+ led</div>
+        <div class="cred">pacifica, ca · ex-apple · 20 years operating · people and performance</div>
       </div>
     </div>
     <div class="terms">
-      <span class="r s2">begins at <b>$60,000</b> · depth determined by you</span>
+      <span class="r s2">begins at <b>$60,000</b> · available how it suits you best</span>
       <span class="r s3">a handful of clients a year · not a limitation, a <b>commitment</b></span>
       <span class="r s4"><b>private.</b> everything. always.</span>
     </div>
