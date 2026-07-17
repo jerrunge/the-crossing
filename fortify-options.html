@@ -84,6 +84,10 @@ section{padding:72px 20px}
 .net-wrap svg{width:100%;height:100%;overflow:visible;display:block}
 .afford{margin-top:18px;text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;
   letter-spacing:.16em;color:var(--sound);text-transform:lowercase}
+.research-go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.08em;color:var(--sound);text-transform:lowercase;cursor:pointer;
+  border-bottom:1px solid rgba(175,198,208,.35);padding-bottom:2px}
+.research-go:hover{color:var(--paper);border-bottom-color:var(--paper)}
 .net-link{stroke:var(--slate-l);stroke-width:.9;opacity:var(--o,.18);fill:none;
   transition:opacity .32s ease,stroke .32s ease}
 .net-link.secondary{stroke-width:1.6;--o:.4}
@@ -256,6 +260,7 @@ body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offs
         <svg viewBox="0 0 800 800" id="netSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
       <div class="afford">ten domains · twenty-two connections · touch any domain</div>
+      <div style="text-align:center"><a class="research-go" href="index.html#research">the research behind the model →</a></div>
     </div>
   </div>
 </section>
@@ -349,7 +354,7 @@ const domains=[
   {code:"PH",name:"Physical",label:"health & vitality",
    detail:"The most potent wellbeing intervention available. Sleep, movement, and nutrition are the biological substrate everything else runs on."},
   {code:"SX",name:"Sexual",label:"intimacy & desire",
-   detail:"Absent from every major wellbeing framework. Fortify names it directly. 46.79% of high-stress workers show sexual difficulty, and 71.8% of partners in affected couples show difficulty themselves."},
+   detail:"Fortify names it directly. 46.79% of high-stress workers show sexual difficulty, and 71.8% of partners in affected couples show difficulty themselves."},
   {code:"RL",name:"Relational",label:"partnership",
    detail:"Close relationships are biological determinants of health. Your partner's attachment style shapes your own cortisol reactivity and immune function."},
   {code:"SC",name:"Social",label:"community",
