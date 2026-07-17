@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fortify™ · Three Ways to Sell It — Jeremy Runge</title>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EFEEE7; --card:#F6F5EE; --dusk:#242A32; --dusk-2:#1D2229;
+  --land:#26251F; --body:#43423A; --silver:#B7B1A4; --hairline:#D8D4C6;
+  --slate:#46606F; --slate-l:#7D93A1; --sound:#AFC6D0; --red:#D14625;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--body);font-family:"Instrument Sans",sans-serif;line-height:1.55}
+.mono{font-family:"IBM Plex Mono",monospace}
+h1,h2,h3,.sub{text-wrap:balance}
+.opt{display:none}.opt.on{display:block}
+.b{display:inline}
+@media(min-width:700px){.b{display:block}}
+.crossing{position:relative;height:2px;margin:26px 0 0;
+  background-image:linear-gradient(to right,var(--red) 0 14px,transparent 14px 22px);
+  background-size:22px 2px;background-repeat:repeat-x;max-width:280px;
+  animation:drawline 1s ease-out .25s both}
+@keyframes drawline{from{max-width:0}to{max-width:280px}}
+.crossing span{position:absolute;right:-2px;top:-15px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--red)}
+.r{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.r.vis{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.crossing{animation:none}.r{opacity:1;transform:none;transition:none}}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);text-transform:lowercase;letter-spacing:.05em;margin-bottom:18px}
+.big-cta{display:block;text-align:center;background:var(--land);color:var(--paper);text-decoration:none;padding:26px 20px;cursor:pointer}
+.big-cta .l1{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--silver);text-transform:lowercase;display:block;margin-bottom:8px}
+.big-cta .l2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(22px,6vw,34px)}
+.fine{text-align:center;font-family:"Newsreader",serif;font-style:italic;font-size:15px;color:var(--slate);padding:22px 20px 30px}
+footer{padding:26px 20px 96px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--body);text-transform:lowercase;display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--hairline)}
+footer.dark{background:var(--dusk-2);color:var(--slate-l);border-top:none}
+
+/* ============ OPTION A · THE MIRROR ============ */
+.mirror{background:var(--dusk-2);color:var(--paper)}
+.mirror .frame{min-height:88svh;display:flex;flex-direction:column;justify-content:center;padding:60px 20px;max-width:820px;margin:0 auto}
+.mirror .frame.short{min-height:56svh}
+.mirror .databar{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate-l);text-transform:lowercase;letter-spacing:.05em;margin-bottom:34px}
+.mirror .say{font-family:"Newsreader",serif;font-size:clamp(23px,6.4vw,34px);line-height:1.45;color:var(--paper);max-width:24ch}
+.mirror .say + .say{margin-top:18px}
+.mirror .say.in{font-style:italic;color:var(--sound);padding-left:24px}
+.mirror .turn{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(30px,8.6vw,54px);line-height:1.02;color:var(--paper)}
+.mirror .jer{border-left:2px solid var(--slate);padding-left:22px;max-width:56ch}
+.mirror .jer p{font-size:17px;line-height:1.7;color:rgba(239,238,231,.88);margin-bottom:14px}
+.mirror .jer .sig{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate-l);text-transform:lowercase}
+.mirror .oneliner{font-family:"Newsreader",serif;font-style:italic;font-size:clamp(19px,5vw,25px);line-height:1.55;color:var(--sound);max-width:34ch;text-align:center;margin:0 auto}
+.mirror .offer{background:var(--paper);color:var(--body);border:none;padding:40px 24px;max-width:640px;margin:0 auto;text-align:center}
+.mirror .offer .p{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(34px,9vw,52px);color:var(--land)}
+.mirror .offer .spec{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--body);text-transform:lowercase;line-height:2;margin-top:12px}
+.mirror .offer .method{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:15px;color:var(--slate);margin-top:18px;letter-spacing:.01em}
+.mirror .quote{text-align:center;padding:0 20px}
+.mirror .quote p{font-family:"Newsreader",serif;font-size:clamp(17px,4.8vw,21px);color:rgba(239,238,231,.85);max-width:38ch;margin:0 auto;line-height:1.6}
+.mirror .quote .who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate-l);text-transform:lowercase;margin-top:14px}
+.mirror .sciline{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate-l);text-transform:lowercase;padding:0 20px 56px}
+.mirror .sciline a{color:var(--sound);text-decoration:none;border-bottom:1px solid rgba(175,198,208,.4)}
+.mirror .fine{color:var(--sound)}
+
+/* ============ OPTION B · THE BRIEF ============ */
+.brief{background:var(--paper)}
+.brief .sheet{max-width:760px;margin:0 auto;padding:96px 20px 40px}
+.brief .bhead{border-bottom:2px solid var(--land);padding-bottom:18px;margin-bottom:8px}
+.brief .bhead .t{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(30px,8vw,46px);color:var(--land);line-height:1}
+.brief .bhead .m{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;margin-top:10px;letter-spacing:.05em}
+.brief section{border-bottom:1px solid var(--hairline);padding:30px 0}
+.brief .sn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);letter-spacing:.08em;margin-bottom:12px}
+.brief h3{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.01em;font-size:20px;color:var(--land);margin-bottom:12px}
+.brief .truth{font-family:"Newsreader",serif;font-size:18.5px;color:var(--land);line-height:1.6;padding:7px 0;max-width:56ch}
+.brief table{border-collapse:collapse;width:100%;font-size:14px;margin-top:6px}
+.brief td{padding:10px 10px 10px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
+.brief td.n{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;font-size:19px;color:var(--land);white-space:nowrap;width:86px}
+.brief td.lbl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;width:150px;padding-top:13px}
+.brief .note{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;margin-top:12px;line-height:1.8}
+.brief .forwho{display:grid;gap:22px;margin-top:6px}
+@media(min-width:700px){.brief .forwho{grid-template-columns:1fr 1fr}}
+.brief .forwho h4{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;letter-spacing:.06em;margin-bottom:8px}
+.brief .forwho li{list-style:none;font-size:15px;color:var(--body);padding:5px 0;border-bottom:1px solid var(--hairline);max-width:none}
+.brief .terms .p{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(34px,9vw,50px);color:var(--land)}
+.brief .ref{font-family:"Newsreader",serif;font-style:italic;font-size:16.5px;color:var(--body);max-width:54ch;margin-top:8px}
+.brief .ref .who{font-family:"IBM Plex Mono",monospace;font-style:normal;font-size:10px;color:var(--slate);text-transform:lowercase;display:block;margin-top:8px}
+
+/* ============ OPTION C · THE CROSSING ROUTE ============ */
+.route{background:var(--paper)}
+.route .wp{position:relative}
+.route .wphoto{position:relative;min-height:78svh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--dusk-2)}
+.route .wphoto .img{position:absolute;inset:0;background-size:cover;background-position:center 38%}
+.route .wphoto .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,30,.88) 0%,rgba(20,24,30,.56) 34%,rgba(20,24,30,.50) 74%,rgba(20,24,30,.64) 100%)}
+.route .wphoto .inner{position:relative;padding:0 20px 34px;max-width:900px}
+.route .wpmark{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:rgba(239,238,231,.75);text-transform:lowercase;letter-spacing:.08em;margin-bottom:14px}
+.route .wphoto h1,.route .wphoto h2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;color:var(--paper);font-size:clamp(34px,9.5vw,72px);line-height:.98}
+.route .wphoto .sub{font-family:"Newsreader",serif;font-style:italic;font-weight:500;color:var(--sound);font-size:clamp(16px,4.4vw,21px);margin-top:14px;max-width:44ch}
+.route .land{padding:64px 20px;max-width:820px;margin:0 auto}
+.route .land .wpmark{color:var(--slate)}
+.route .land h2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;color:var(--land);font-size:clamp(26px,7vw,44px);line-height:1.02;margin-bottom:16px}
+.route .land p.lead{font-size:16.5px;max-width:54ch}
+.route .letters{margin:26px 0 0;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--slate);letter-spacing:.14em;text-transform:uppercase;line-height:2}
+.route .letters b{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;color:var(--land);font-size:26px;vertical-align:-2px;padding-left:6px}
+.route .duskband{background:var(--dusk);color:var(--paper);padding:64px 20px}
+.route .duskband .inner{max-width:820px;margin:0 auto}
+.route .duskband .wpmark{color:var(--slate-l)}
+.route .duskband h2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;color:var(--paper);font-size:clamp(26px,7vw,44px);line-height:1.02;margin-bottom:20px}
+.route .weather{list-style:none}
+.route .weather li{padding:13px 0;border-bottom:1px solid rgba(239,238,231,.14)}
+.route .weather .nm{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:16.5px;color:var(--paper)}
+.route .weather .pair{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate-l);text-transform:lowercase;margin-left:8px}
+.route .weather p{font-family:"Newsreader",serif;font-style:italic;font-size:15px;color:var(--sound);margin-top:4px;max-width:52ch}
+.route .legs{margin-top:8px}
+.route .leg{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-top:1px solid var(--hairline)}
+.route .leg .no{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--red);padding-top:5px}
+.route .leg h3{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:20px;color:var(--land);margin-bottom:4px}
+.route .leg p{font-size:14.5px;max-width:54ch}
+.route .guide{display:grid;gap:26px;align-items:start}
+@media(min-width:700px){.route .guide{grid-template-columns:300px 1fr}}
+.route .guide .fig{border:1px solid var(--hairline);background:var(--card);padding:10px}
+.route .guide .fig img{display:block;width:100%;height:auto}
+.route .guide .fig figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);text-transform:lowercase;padding:10px 4px 2px}
+.route .guide p{font-size:16px;line-height:1.7;margin-bottom:12px;max-width:52ch}
+.route .guide .vow{font-family:"Newsreader",serif;font-style:italic;font-size:19px;color:var(--land)}
+.route .glacier{position:relative;min-height:56svh;background-size:cover;background-position:center}
+.route .glacier .scrim{position:absolute;inset:0;background:rgba(20,24,30,.28)}
+.route .glacier .cap{position:absolute;left:20px;bottom:16px;font-family:"IBM Plex Mono",monospace;font-size:10px;color:rgba(239,238,231,.9);text-transform:lowercase}
+.route .other{list-style:none}
+.route .other li{font-family:"Newsreader",serif;font-size:clamp(18px,5vw,23px);line-height:1.5;padding:12px 0;border-bottom:1px solid rgba(239,238,231,.14);color:var(--paper)}
+.route .other li em{font-style:italic;color:var(--sound)}
+.route .shelter{margin:0 auto;max-width:640px;text-align:center;border:1px solid var(--hairline);background:var(--card);padding:34px 20px}
+.route .shelter .p{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(34px,9vw,52px);color:var(--land)}
+.route .shelter .spec{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--body);text-transform:lowercase;line-height:2;margin-top:10px}
+
+/* option switcher (review tool) */
+.pager{position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--land);display:flex;flex-wrap:wrap;justify-content:center;gap:2px;padding:8px 6px;border-top:2px solid var(--red)}
+.pager .lbl{color:var(--slate-l);font-family:"IBM Plex Mono",monospace;font-size:9.5px;padding:4px 8px 4px 2px;border-right:1px solid rgba(239,238,231,.2);margin-right:4px}
+.pager button{appearance:none;background:none;border:none;color:var(--silver);font-family:"IBM Plex Mono",monospace;font-size:10px;text-transform:lowercase;padding:4px 9px;cursor:pointer;letter-spacing:.03em}
+.pager button.on{color:var(--paper);background:var(--slate)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     OPTION A · THE MIRROR
+     Thesis: they buy the moment they feel seen. Recognition first,
+     offer last, science demoted to a receipt. -->
+<div class="opt on mirror" id="mirror">
+
+  <div class="frame">
+    <div class="databar">fortify™ · for the leader in reckoning · 270° w</div>
+    <p class="say">The trajectory looks right from the outside.</p>
+    <p class="say in">You know there's a version of you none of it has made room for yet.</p>
+  </div>
+
+  <div class="frame short">
+    <p class="say">You've optimized everything.</p>
+    <p class="say in">Except the thing running all of it.</p>
+  </div>
+
+  <div class="frame short">
+    <p class="say">Wake before the alarm. Deliver. Repeat.</p>
+    <p class="say in">And the mirror is a place you flinch from.</p>
+  </div>
+
+  <div class="frame short">
+    <p class="turn"><span class="b">That's not a character flaw.</span> <span class="b">That's the work that</span> <span class="b">hasn't happened&nbsp;yet.</span></p>
+    <div class="crossing"><span>270°</span></div>
+  </div>
+
+  <div class="frame short">
+    <div class="jer r">
+      <p>I know what it looks like when everything on paper says success and something essential is still missing. I ran the rooms. Thirteen years at Apple. A $900M P&amp;L. And I lived my own version of the gap, across identity, performance, and the parts of life most frameworks won't touch.</p>
+      <p>Fortify is what I built because nothing else went far enough.</p>
+      <div class="sig">jeremy runge · pacifica, ca</div>
+    </div>
+  </div>
+
+  <div class="frame short">
+    <p class="oneliner r">"Fortify™ starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible."</p>
+  </div>
+
+  <div style="padding:0 20px 64px">
+    <div class="offer r">
+      <div class="kicker" style="text-align:center">the shape of it</div>
+      <div class="p">Six months. 1:1.</div>
+      <div class="spec">begins at $60,000 · weekly two-hour connects · full async support<br>a small roster. not a limitation, a commitment.</div>
+      <div class="method">Align. Investigate. Strengthen. Move forward.</div>
+    </div>
+  </div>
+
+  <div class="quote r" style="padding-bottom:56px">
+    <p>"He has this rare ability to understand the whole person, not just the role or the performance. A truth-teller in the best way."</p>
+    <div class="who">teaubrian clark · vision, people &amp; culture leader</div>
+  </div>
+
+  <p class="sciline">grounded in 183 randomized controlled trials · <a href="https://jerrunge.github.io/the-crossing/" target="_blank">the research →</a></p>
+
+  <a class="big-cta" href="https://jeremyrunge.com/fortify-intake">
+    <span class="l1">a short conversation. what's true right now. no pitch.</span>
+    <span class="l2">Start the conversation</span>
+  </a>
+  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+
+  <footer class="dark"><span>fortify™ · jeremy runge</span><span>pacifica, ca · 270° w</span></footer>
+</div>
+
+<!-- ============================================================
+     OPTION B · THE BRIEF
+     Thesis: operators green-light investments all day. Sell it the
+     way they buy: a deal memo. Radical transparency, zero adjectives. -->
+<div class="opt brief" id="brief">
+  <div class="sheet">
+    <div class="bhead">
+      <div class="t">FORTIFY™ — THE BRIEF</div>
+      <div class="m">prepared for: the leader in reckoning · six months · 1:1 · pacifica, ca · 270° w</div>
+      <div class="crossing"><span>270°</span></div>
+    </div>
+
+    <section class="r">
+      <div class="sn">01 / SITUATION</div>
+      <p class="truth">The trajectory looks right from the outside. Something essential is unaccounted for.</p>
+      <p class="truth">The strategy that got you here has stopped working on you.</p>
+      <p class="truth">You've optimized the parts. The system is what's struggling.</p>
+    </section>
+
+    <section class="r">
+      <div class="sn">02 / MECHANISM</div>
+      <h3>Every part of you affects every other part. The premise is simple. Almost no one acts on it.</h3>
+      <table>
+        <tr><td class="n">ONE</td><td><strong>Identity fusion</strong> <span class="mono" style="font-size:10px;color:var(--slate)">financial ↔ identity</span><br>Compensation and identity fuse. Job loss is an identity rupture, not an income event.</td></tr>
+        <tr><td class="n">15%</td><td><strong>Hormonal cascade</strong> <span class="mono" style="font-size:10px;color:var(--slate)">physical ↔ sexual</span><br>One week of short sleep can drop testosterone 15%. A chain reaction. Reversible.</td></tr>
+        <tr><td class="n">2×</td><td><strong>Mind-body unity</strong> <span class="mono" style="font-size:10px;color:var(--slate)">physical ↔ mental</span><br>Body and mind treated together doubles the gain. Therapy without sleep is theater.</td></tr>
+        <tr><td class="n">71.8%</td><td><strong>Desire spillover</strong> <span class="mono" style="font-size:10px;color:var(--slate)">sexual ↔ relational</span><br>Partner sexual difficulty runs 71.8% vs a 38.1% baseline. Stress reads as rejection.</td></tr>
+      </table>
+      <p class="note">architecture: foundation → ten domains → expression. coaching that skips a layer fails invisibly.</p>
+    </section>
+
+    <section class="r">
+      <div class="sn">03 / EVIDENCE</div>
+      <table>
+        <tr><td class="lbl">meta-analysis</td><td>2026 network meta-analysis. 183 randomized controlled trials, 22,811 participants.</td></tr>
+        <tr><td class="lbl">combined effect</td><td>SMD 0.73 for physical + psychological together, vs ≈0.45 for either alone. Roughly double.</td></tr>
+        <tr><td class="lbl">coaching efficacy</td><td>Psychologically-informed executive coaching: g = 0.59 across 37 RCTs.</td></tr>
+        <tr><td class="lbl">position</td><td>This is not a philosophy. It is the strongest evidence signal in wellbeing science. Fortify is built to implement it.</td></tr>
+      </table>
+    </section>
+
+    <section class="r">
+      <div class="sn">04 / PROGRAM</div>
+      <table>
+        <tr><td class="lbl">duration</td><td>Six months.</td></tr>
+        <tr><td class="lbl">cadence</td><td>Weekly two-hour connects. Full asynchronous support between them. In person where it matters.</td></tr>
+        <tr><td class="lbl">method</td><td><strong>Align.</strong> Map all ten domains, find the keystone. <strong>Investigate.</strong> Go where the map points. <strong>Strengthen.</strong> Build the architecture from the bedrock up. <strong>Move forward.</strong> Leave knowing the reckoning was worth it.</td></tr>
+        <tr><td class="lbl">first intervention</td><td>The coaching relationship itself. That is not a slogan; it is the research.</td></tr>
+      </table>
+    </section>
+
+    <section class="r">
+      <div class="sn">05 / FIT</div>
+      <div class="forwho">
+        <ul><h4>this is for you if</h4>
+          <li>You've led teams and built things, and you know there's more.</li>
+          <li>You're ready to bring everything, with no part of you left behind.</li>
+          <li>You want the challenging, honest, sometimes uncomfortable work.</li>
+        </ul>
+        <ul><h4>this is not</h4>
+          <li>A checklist or a program. It's a living architecture, yours.</li>
+          <li>Therapy. It's for functional adults who are already well.</li>
+          <li>Comfort. You have enough people telling you what you want to hear.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="r terms">
+      <div class="sn">06 / TERMS</div>
+      <div class="p">Begins at $60,000</div>
+      <p class="note">six months · depth determined by you · small roster, held as a commitment · full discretion</p>
+      <p class="ref">"A unique combination of deep strategic vision and genuine, heart-centered care for people."<span class="who">michael hansen · retail operations leader · ex-apple, gopuff</span></p>
+    </section>
+
+    <section class="r" style="border-bottom:none">
+      <div class="sn">07 / NEXT STEP</div>
+      <p class="truth">One short conversation. What's true right now, what you're building toward, and whether this is the right moment. There's no pitch. If it's the right fit, you'll both know.</p>
+    </section>
+  </div>
+
+  <a class="big-cta" href="https://jeremyrunge.com/fortify-intake">
+    <span class="l1">30 minutes · no pitch · no pressure</span>
+    <span class="l2">Book the conversation</span>
+  </a>
+  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+
+  <footer><span>fortify™ · engagement brief</span><span>pacifica, ca · 270° w</span></footer>
+</div>
+
+<!-- ============================================================
+     OPTION C · THE CROSSING ROUTE
+     Thesis: sell the transformation as an expedition with a guide
+     who has made the crossing. The page IS the route. -->
+<div class="opt route" id="route">
+
+  <div class="wphoto">
+    <div class="img" style="background-image:url('C-photos/zermatt-2400.jpg')"></div>
+    <div class="scrim"></div>
+    <div class="inner">
+      <div class="wpmark">wp·01 · the false summit</div>
+      <h1><span class="b">You made the summit.</span> <span class="b">It didn't make&nbsp;you.</span></h1>
+      <p class="sub">You've led well. You've delivered. You know there's&nbsp;more.</p>
+      <div class="crossing"><span>270°</span></div>
+    </div>
+  </div>
+
+  <div class="land">
+    <div class="wpmark">wp·02 · the map</div>
+    <h2>Every part of you affects every other part.</h2>
+    <p class="lead">The premise is simple and almost no one acts on it. Ten domains. Three layers. Twenty-two documented connections. Your whole life, drawn as one&nbsp;terrain.</p>
+    <div class="letters r">FI · SC · RL · ME · SP · SX · EN · ID · PH · CG <b>→ YOU</b></div>
+  </div>
+
+  <div class="duskband">
+    <div class="inner">
+      <div class="wpmark">wp·03 · the weather</div>
+      <h2>Four systems move the whole mountain.</h2>
+      <ul class="weather">
+        <li class="r"><span class="nm">Identity fusion</span><span class="pair">financial ↔ identity</span><p>Compensation and identity fuse into one thing. Rupture one, rupture both.</p></li>
+        <li class="r"><span class="nm">Hormonal cascade</span><span class="pair">physical ↔ sexual</span><p>One week of short sleep, testosterone down 15%. Weather, not character.</p></li>
+        <li class="r"><span class="nm">Mind-body unity</span><span class="pair">physical ↔ mental</span><p>Treated together, the gain doubles. One operating system.</p></li>
+        <li class="r"><span class="nm">Desire spillover</span><span class="pair">sexual ↔ relational</span><p>Stress reads as rejection. Two storms now, feeding each other.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="land">
+    <div class="wpmark">wp·04 · the route</div>
+    <h2>Six months. Four legs. None of them straight.</h2>
+    <div class="legs">
+      <div class="leg r"><div class="no">·01</div><div><h3>Align</h3><p>Map the full terrain. Find the keystone, where small shifts move everything.</p></div></div>
+      <div class="leg r"><div class="no">·02</div><div><h3>Investigate</h3><p>Go where the map points. The places managed, not addressed.</p></div></div>
+      <div class="leg r"><div class="no">·03</div><div><h3>Strengthen</h3><p>Build the architecture from the bedrock up.</p></div></div>
+      <div class="leg r"><div class="no">·04</div><div><h3>Move forward</h3><p>Leave knowing the reckoning was worth it.</p></div></div>
+    </div>
+  </div>
+
+  <div class="land" style="padding-top:20px">
+    <div class="wpmark">wp·05 · the guide</div>
+    <div class="guide">
+      <figure class="fig r"><img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge" loading="lazy"><figcaption>the guide · pacifica, ca</figcaption></figure>
+      <div class="r">
+        <p>I've run the rooms. Thirteen years at Apple, the world's most productive retail operation. A $900M P&amp;L turned back to growth. Sixty thousand people led.</p>
+        <p>And I've made this crossing myself. Not read about it. Made it.</p>
+        <p class="vow">You are not on your own. I am your partner for the climb.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="glacier" style="background-image:url('C-photos/new-zealand-1600.jpg')">
+    <div class="scrim"></div>
+    <div class="cap">wp·06 · the other side is real</div>
+  </div>
+
+  <div class="duskband">
+    <div class="inner">
+      <div class="wpmark">wp·06 · the other side</div>
+      <ul class="other">
+        <li class="r">Wake up wanting the day. <em>Not scared of it.</em></li>
+        <li class="r">Brain back to building. <em>Not escaping.</em></li>
+        <li class="r">Relationships as your fortress. <em>Not your necessity.</em></li>
+        <li class="r">And the mirror stops being a place you flinch from.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="land">
+    <div class="wpmark">wp·07 · the shelter</div>
+    <div class="shelter r">
+      <div class="kicker" style="text-align:center">investment</div>
+      <div class="p">$60,000</div>
+      <div class="spec">begins here · six months · weekly two-hour connects<br>small roster, held as a commitment · align. investigate. strengthen. move forward.</div>
+    </div>
+  </div>
+
+  <a class="big-cta" href="https://jeremyrunge.com/fortify-intake">
+    <span class="l1">wp·08 · rope up · 30 minutes · no pitch</span>
+    <span class="l2">Start the crossing</span>
+  </a>
+  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+
+  <footer><span>fortify™ · the crossing</span><span>pacifica, ca · 270° w</span></footer>
+</div>
+
+<div class="pager">
+  <span class="lbl">fortify · three ways to sell it</span>
+  <button class="on" data-opt="mirror">a · the mirror</button>
+  <button data-opt="brief">b · the brief</button>
+  <button data-opt="route">c · the crossing</button>
+</div>
+
+<script>
+function go(id){
+  document.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.id===id));
+  document.querySelectorAll('.pager button').forEach(b=>b.classList.toggle('on',b.getAttribute('data-opt')===id));
+  scrollTo(0,0);
+}
+document.querySelectorAll('[data-opt]').forEach(b=>b.addEventListener('click',()=>go(b.getAttribute('data-opt'))));
+document.querySelectorAll('.jer,.oneliner,.offer,.quote,section,.letters,.weather li,.leg,.guide .fig,.guide .r,.other li,.shelter').forEach(el=>el.classList.add('r'));
+function tick(){
+  const lim = innerHeight*.92;
+  document.querySelectorAll('.opt.on .r:not(.vis)').forEach(el=>{ if(el.getBoundingClientRect().top<lim) el.classList.add('vis'); });
+}
+addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick,{passive:true}); setInterval(tick,250); tick();
+</script>
+</body>
+</html>
