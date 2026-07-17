@@ -457,11 +457,11 @@ function closeDetail(){
 document.addEventListener("click",e=>{
   if(!e.target.closest(".net-wrap")&&!e.target.closest(".net-detail"))closeDetail();
 });
-/* draw-in, then breathe */
-requestAnimationFrame(()=>requestAnimationFrame(()=>{
+/* draw-in, then breathe — plain timer, not rAF: webviews can drop rAF callbacks */
+setTimeout(()=>{
   svg.querySelectorAll(".net-link").forEach(l=>l.style.strokeDashoffset=0);
   setTimeout(()=>{ if(!reduced) svg.classList.add("live"); },2600);
-}));
+},60);
 /* ---------- reveals + scroll-aware chrome (poll + scroll: pane-safe) ---------- */
 const darkBands=[...document.querySelectorAll("[data-dark]")];
 function tick(){

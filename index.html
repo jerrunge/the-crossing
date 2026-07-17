@@ -1087,10 +1087,11 @@ document.querySelectorAll('[data-page]').forEach(el=>{
   let drawn=false;
   window.__netDrawIfNeeded=function(){
     if(drawn)return; drawn=true;
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    /* plain timer, not rAF: this webview drops rAF callbacks queued off the paint path */
+    setTimeout(()=>{
       nsvg.querySelectorAll(".net-link").forEach(l=>l.style.strokeDashoffset=0);
       setTimeout(()=>{ if(!noMotion) nsvg.classList.add("live"); },2600);
-    }));
+    },60);
   };
 })();
 const deep = location.hash.replace('#','');
