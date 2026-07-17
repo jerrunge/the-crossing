@@ -11,57 +11,78 @@
 <style>
 :root{
   --paper:#EFEEE7; --card:#F6F5EE; --dusk:#242A32; --dusk-2:#1D2229;
-  --land:#26251F; --body:#43423A; --silver:#B7B1A4;
+  --land:#26251F; --body:#43423A; --silver:#B7B1A4; --hairline:#D8D4C6;
   --slate:#46606F; --slate-l:#7D93A1; --sound:#AFC6D0; --red:#D14625;
-  --hair:rgba(239,238,231,.14);
+  --hair-d:rgba(239,238,231,.14);
   --disp:'Schibsted Grotesk',sans-serif; --serif:'Newsreader',serif;
   --mono:'IBM Plex Mono',monospace; --sans:'Instrument Sans',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--dusk);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--paper);color:var(--land);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.mono{font-family:var(--mono)}
 
-/* chrome — bare strip */
+/* chrome — bare strip, scroll-aware like nav.float */
 .strip{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
-  padding:16px 22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
-  color:var(--silver);background:linear-gradient(to bottom,rgba(29,34,41,.85),rgba(29,34,41,0));pointer-events:none}
+  padding:16px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
+  color:rgba(239,238,231,.85);text-shadow:0 1px 8px rgba(20,24,30,.5);pointer-events:none;transition:color .3s}
 .strip a{pointer-events:auto}
 .strip a:hover{color:var(--sound)}
+body.light-chrome .strip{color:var(--slate);text-shadow:none}
+body.light-chrome .strip a:hover{color:var(--land)}
 
-section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-  padding:96px 6vw;position:relative}
-.micro{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:lowercase;color:var(--slate-l);margin-bottom:26px}
+/* ===== hero — site treatment: photo, scrim, bottom-anchored ===== */
+.hero{position:relative;min-height:92svh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--dusk-2)}
+.hero .img{position:absolute;inset:0;background-size:cover;background-position:center 38%;
+  background-image:url('C-photos/zermatt-2400.jpg')}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,30,.88) 0%,rgba(20,24,30,.56) 34%,rgba(20,24,30,.50) 74%,rgba(20,24,30,.64) 100%)}
+.hero .databar{position:absolute;top:64px;left:20px;font-family:var(--mono);font-size:10.5px;
+  color:rgba(239,238,231,.72);text-transform:lowercase;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.hero .inner{position:relative;padding:0 20px 30px;max-width:900px}
+.hero h1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;color:var(--paper);
+  font-size:clamp(38px,10.5vw,84px);line-height:.97;text-wrap:balance}
+.hero .sub{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--sound);
+  font-size:clamp(16px,4.4vw,21px);margin-top:16px;max-width:44ch}
+.b{display:inline}
+@media(min-width:700px){.hero h1 .b{display:block}}
+/* the course crossing the hero: the page's one red */
+.crossing{position:relative;height:2px;margin:26px 0 0;
+  background-image:linear-gradient(to right,var(--red) 0 14px,transparent 14px 22px);
+  background-size:22px 2px;background-repeat:repeat-x;max-width:280px;
+  animation:drawline 1s ease-out .25s both}
+.crossing span{position:absolute;right:-2px;top:-15px;font-family:var(--mono);font-size:9.5px;color:var(--red)}
+@keyframes drawline{from{max-width:0}to{max-width:280px}}
+.herolink{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:11px;
+  color:rgba(239,238,231,.9);text-transform:lowercase;letter-spacing:.05em;cursor:pointer;
+  border-bottom:1px solid rgba(239,238,231,.35);padding-bottom:3px}
+.herolink:hover{border-bottom-color:var(--red);color:var(--paper)}
 
-/* type */
-.d1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.02;
-  font-size:clamp(2.3rem,6.2vw,4.6rem);text-wrap:balance}
-.d2{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.04;
-  font-size:clamp(2rem,5vw,3.6rem);text-wrap:balance}
-.w{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--silver);
-  font-size:clamp(1.15rem,2.4vw,1.55rem);line-height:1.5;text-wrap:balance}
+/* ===== sections ===== */
+section{padding:72px 20px}
+.inner-c{max-width:820px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:11px;color:var(--slate);text-transform:lowercase;
+  letter-spacing:.05em;margin-bottom:18px}
+.d1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.02;color:var(--land);
+  font-size:clamp(2.1rem,6vw,4rem);text-wrap:balance}
+.d2{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.04;color:var(--land);
+  font-size:clamp(1.7rem,4.6vw,3rem);text-wrap:balance}
+.w{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--body);
+  font-size:clamp(1.1rem,2.3vw,1.45rem);line-height:1.5;text-wrap:balance}
 .mline{font-family:var(--mono);font-size:clamp(.72rem,1.4vw,.85rem);letter-spacing:.08em;
-  color:var(--slate-l);line-height:2.1;text-transform:lowercase}
+  color:var(--slate);line-height:2.1;text-transform:lowercase}
 
-/* reveals */
-.r{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+/* reveals — site motion: .5s, 12px */
+.r{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
 .r.vis{opacity:1;transform:none}
-.r.s2{transition-delay:.18s}.r.s3{transition-delay:.36s}.r.s4{transition-delay:.54s}.r.s5{transition-delay:.72s}
+.r.s2{transition-delay:.12s}.r.s3{transition-delay:.24s}.r.s4{transition-delay:.36s}.r.s5{transition-delay:.48s}
 
-/* S1 hero */
-#hero{padding-top:110px}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;max-width:1280px;margin:0 auto;width:100%}
-@media(min-width:980px){.hero-grid{grid-template-columns:.9fr 1.1fr;gap:4vw}}
-.hero-sub{margin-top:26px}
-.cta-ghost{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;
-  text-transform:lowercase;color:var(--sound);border:1px solid var(--slate);padding:14px 22px;transition:all .3s}
-.cta-ghost:hover{background:var(--slate);color:var(--paper)}
-.afford{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--slate-l);text-transform:lowercase}
-
-/* network */
-.net-wrap{width:100%;max-width:660px;margin:0 auto;aspect-ratio:1;position:relative}
+/* ===== the model — dusk band ===== */
+.dusk-band{background:var(--dusk);color:var(--paper);padding:72px 20px}
+.dusk-band .kicker{color:var(--slate-l)}
+.net-wrap{width:100%;max-width:640px;margin:0 auto;aspect-ratio:1;position:relative}
 .net-wrap svg{width:100%;height:100%;overflow:visible;display:block}
+.afford{margin-top:18px;text-align:center;font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;color:var(--slate-l);text-transform:lowercase}
 .net-link{stroke:var(--slate-l);stroke-width:.9;opacity:var(--o,.18);fill:none;
   transition:opacity .32s ease,stroke .32s ease}
 .net-link.secondary{stroke-width:1.6;--o:.4}
@@ -90,99 +111,109 @@ svg.live .net-link{animation:breathe 8s ease-in-out infinite}
   .net-link.keystone{stroke-width:3.6}
   .net-link.highlight{stroke-width:4.4}
 }
-
-/* detail card */
 .net-detail{position:fixed;bottom:14px;left:14px;right:14px;max-width:540px;margin:0 auto;z-index:50;
-  background:var(--dusk-2);border:1px solid var(--hair);padding:22px 26px 20px;
+  background:var(--dusk-2);border:1px solid var(--hair-d);padding:22px 26px 20px;color:var(--paper);
   transform:translateY(16px);opacity:0;pointer-events:none;transition:opacity .32s,transform .32s;
   box-shadow:0 18px 44px rgba(0,0,0,.5)}
 .net-detail.show{opacity:1;transform:none;pointer-events:auto}
-.net-detail .micro{margin-bottom:8px}
+.net-detail .micro{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:lowercase;
+  color:var(--slate-l);margin-bottom:8px;display:block}
 .net-detail h4{font-family:var(--disp);font-weight:900;font-size:1.35rem;letter-spacing:-0.02em;margin-bottom:8px}
 .net-detail p{font-family:var(--serif);font-size:.98rem;line-height:1.6;color:var(--silver)}
 .net-detail .close{position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;
   font-family:var(--mono);font-size:.7rem;color:var(--slate-l);letter-spacing:.1em}
 
-/* S2 cascade */
-#source{text-align:center;align-items:center}
+/* ===== the cascade — paper ===== */
+#source{text-align:center}
+#source .inner-c{display:flex;flex-direction:column;align-items:center}
 #source .w{max-width:640px}
-#source .mline{margin:30px 0}
-#source .d1{margin-top:44px}
-#source .after{margin-top:26px;color:var(--paper);font-style:italic;font-family:var(--serif);
-  font-size:clamp(1.3rem,2.8vw,1.8rem)}
+#source .mline{margin:26px 0}
+#source .d1{margin-top:40px}
+#source .after{margin-top:22px;color:var(--land);font-style:italic;font-family:var(--serif);
+  font-size:clamp(1.25rem,2.7vw,1.7rem)}
 
-/* S3 evidence */
-#evidence{text-align:center;align-items:center;background:var(--dusk-2)}
-#evidence .d2{max-width:820px}
-#evidence .mline{margin-top:40px}
-.rule{width:56px;border-top:1px solid var(--hair);margin:34px auto 0}
+/* ===== the evidence — card ===== */
+#evidence{background:var(--card);text-align:center;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+#evidence .inner-c{display:flex;flex-direction:column;align-items:center}
+#evidence .d2{max-width:760px}
+#evidence .mline{margin-top:34px}
+.rule{width:56px;border-top:1px solid var(--hairline);margin:30px auto 0}
 
-/* S4 the work */
-#work{text-align:center;align-items:center}
-.oneliner{font-family:var(--serif);font-size:clamp(1rem,1.9vw,1.2rem);line-height:1.7;color:var(--silver);
+/* ===== the work — paper ===== */
+#work{text-align:center}
+#work .inner-c{display:flex;flex-direction:column;align-items:center}
+.oneliner{font-family:var(--serif);font-size:clamp(1rem,1.9vw,1.2rem);line-height:1.7;color:var(--body);
   max-width:620px;text-wrap:balance}
-.moves{margin:52px 0 34px}
+.moves{margin:46px 0 30px}
 .moves div{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.12;
-  font-size:clamp(2.6rem,7.4vw,5.2rem)}
-.moves .m2{color:var(--sound)}.moves .m3{color:var(--slate-l)}.moves .m4{color:var(--silver)}
+  font-size:clamp(2.4rem,7vw,4.6rem)}
+.moves .m1{color:var(--land)}.moves .m2{color:var(--dusk)}.moves .m3{color:var(--slate)}.moves .m4{color:var(--slate-l)}
 
-/* S5 close */
-#close{text-align:center;align-items:center;background:var(--dusk-2);padding-bottom:70px}
-.guide{display:flex;align-items:center;gap:18px;margin-bottom:46px;text-align:left}
+/* ===== interstitial — site component ===== */
+.interstitial{position:relative;height:54svh;background-size:cover;background-position:center;padding:0}
+.interstitial .scrim2{position:absolute;inset:0;background:rgba(20,24,30,.28)}
+.interstitial .cap{position:absolute;left:20px;bottom:16px;font-family:var(--mono);
+  font-size:10px;color:rgba(239,238,231,.9);text-transform:lowercase;letter-spacing:.06em}
+
+/* ===== the terms — paper ===== */
+#close{text-align:center;padding-bottom:0}
+#close .inner-c{display:flex;flex-direction:column;align-items:center}
+.guide{display:flex;align-items:center;gap:18px;margin-bottom:42px;text-align:left}
 .guide img{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center 20%;
-  border:1px solid var(--hair)}
-.guide .name{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-0.01em}
-.guide .cred{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--slate-l);
+  border:1px solid var(--hairline)}
+.guide .name{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-0.01em;color:var(--land)}
+.guide .cred{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--slate);
   text-transform:lowercase;margin-top:5px}
-.terms{display:flex;flex-direction:column;gap:14px;margin-bottom:56px}
+.terms{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
 .terms span{font-family:var(--mono);font-size:clamp(.74rem,1.5vw,.88rem);letter-spacing:.08em;
-  color:var(--silver);text-transform:lowercase}
-.terms b{color:var(--paper);font-weight:500}
-.course{height:2px;max-width:0;width:240px;background:var(--red);margin:0 auto 56px;transition:max-width 1.4s cubic-bezier(.2,.7,.2,1)}
-.course.vis{max-width:240px}
-.cta-slab{display:inline-block;background:var(--paper);color:var(--land);font-family:var(--disp);
-  font-weight:700;font-size:clamp(1.05rem,2.2vw,1.3rem);letter-spacing:-0.01em;
-  padding:22px 44px;transition:background .3s,color .3s}
-.cta-slab:hover{background:var(--sound)}
-.closer{margin-top:34px;font-family:var(--serif);font-style:italic;color:var(--silver);
+  color:var(--body);text-transform:lowercase}
+.terms b{color:var(--land);font-weight:500}
+.closer{margin:34px 0 0;font-family:var(--serif);font-style:italic;color:var(--body);
   font-size:1rem;line-height:1.6}
-.foot{margin-top:70px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--slate);text-transform:lowercase}
-.foot a:hover{color:var(--sound)}
+.foot{padding:28px 0 34px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  color:var(--slate);text-transform:lowercase}
+.foot a:hover{color:var(--land)}
+
+/* ===== giant CTA — site component ===== */
+.big-cta{display:block;text-align:center;background:var(--land);color:var(--paper);
+  padding:26px 20px;cursor:pointer;width:100vw;margin:48px calc(50% - 50vw) 0}
+.big-cta .l1{font-family:var(--mono);font-size:10.5px;color:var(--silver);text-transform:lowercase;
+  display:block;margin-bottom:8px}
+.big-cta .l2{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;font-size:clamp(22px,6vw,34px)}
 
 @media(prefers-reduced-motion:reduce){
+  .crossing{animation:none}
   .r{opacity:1;transform:none;transition:none}
   svg.live .net-link{animation:none}
-  .course{max-width:240px;transition:none}
 }
 
 /* ===== edit mode — activated by #edit in URL, invisible otherwise ===== */
 body.editing .r{opacity:1!important;transform:none!important;transition:none}
-body.editing .course{max-width:240px}
 body.editing [contenteditable]{cursor:text;transition:outline .14s ease}
 body.editing [contenteditable]:hover{outline:1px dashed var(--slate-l);outline-offset:6px}
-body.editing [contenteditable]:focus{outline:2px solid var(--sound);outline-offset:6px}
+body.editing [contenteditable]:focus{outline:2px solid var(--slate);outline-offset:6px}
 .edit-ui{position:fixed;top:1.2rem;right:1.2rem;z-index:100;display:flex;gap:.5rem;align-items:center;
   font-family:var(--mono);background:var(--dusk-2);padding:.5rem .6rem .5rem .9rem;
-  border:1px solid var(--hair);backdrop-filter:blur(6px)}
+  border:1px solid var(--hair-d);backdrop-filter:blur(6px)}
 .edit-status{font-size:.72rem;letter-spacing:.06em;text-transform:lowercase;color:var(--slate-l);
-  padding-right:.6rem;border-right:1px solid var(--hair)}
+  padding-right:.6rem;border-right:1px solid var(--hair-d)}
 .edit-status.unsaved{color:var(--sound)}
 .edit-save-path{font-family:var(--mono);font-size:.66rem;color:var(--slate-l);max-width:180px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--hair)}
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:.6rem;border-right:1px solid var(--hair-d)}
 .edit-save-path:empty{display:none}
 .edit-btn{padding:.45rem .9rem;background:var(--slate);color:var(--paper);border:none;
   font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:lowercase;
   cursor:pointer;transition:background .15s}
 .edit-btn:hover{background:var(--slate-l)}
-.edit-btn-secondary{background:transparent;color:var(--slate-l);border:1px solid var(--hair)}
+.edit-btn-secondary{background:transparent;color:var(--slate-l);border:1px solid var(--hair-d)}
 .edit-btn-secondary:hover{background:rgba(125,147,161,.10);color:var(--paper)}
 .edit-help{position:fixed;bottom:1.2rem;right:1.2rem;z-index:100;font-family:var(--mono);
   font-size:.66rem;color:var(--slate-l);background:var(--dusk-2);padding:.7rem .9rem;
-  border:1px solid var(--hair);backdrop-filter:blur(6px);display:flex;flex-direction:column;
+  border:1px solid var(--hair-d);backdrop-filter:blur(6px);display:flex;flex-direction:column;
   gap:.42rem;line-height:1;letter-spacing:.04em}
 .edit-help-row{display:flex;align-items:center;gap:.6rem}
 .edit-help kbd{display:inline-block;background:rgba(125,147,161,.14);padding:2px 6px;
-  border:1px solid var(--hair);font-family:var(--mono);font-size:.66rem;min-width:2.4em;
+  border:1px solid var(--hair-d);font-family:var(--mono);font-size:.66rem;min-width:2.4em;
   text-align:center;color:var(--paper)}
 .edit-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--slate);
   color:var(--paper);padding:1.1rem 2rem;font-family:var(--mono);font-size:.82rem;
@@ -202,75 +233,99 @@ body.editing [contenteditable]:focus{outline:2px solid var(--sound);outline-offs
   <span>fortify™</span>
 </div>
 
-<!-- S1 · the premise, alive -->
-<section id="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="micro r">fortify™ · a one-to-one practice</div>
-      <h1 class="d1 r s2">Every part of you affects every other&nbsp;part.</h1>
-      <div class="mline hero-sub r s3">ten domains · twenty-two documented connections</div>
-      <a class="cta-ghost r s4" href="index.html#intake">start the conversation →</a>
-    </div>
-    <div class="r s3">
+<!-- S1 · the premise — site hero: photo, scrim, crossing -->
+<div class="hero" data-dark>
+  <div class="img"></div>
+  <div class="scrim"></div>
+  <div class="databar">fortify™ · six months · 1:1</div>
+  <div class="inner">
+    <h1><span class="b">Every part of you</span> <span class="b">affects every other&nbsp;part.</span></h1>
+    <p class="sub">One person beside&nbsp;you.</p>
+    <div class="crossing"><span>270°</span></div>
+    <a class="herolink" href="index.html#intake">start the conversation →</a>
+  </div>
+</div>
+
+<!-- S2 · the model — dusk band -->
+<section class="dusk-band" data-dark id="model">
+  <div class="inner-c">
+    <div class="kicker r">the model · ten domains · twenty-two documented connections</div>
+    <div class="r s2">
       <div class="net-wrap" id="netWrap">
         <svg viewBox="0 0 800 800" id="netSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
-      <div class="afford" style="text-align:center">touch any domain</div>
+      <div class="afford">touch any domain</div>
     </div>
   </div>
 </section>
 
-<!-- S2 · the source -->
+<!-- S3 · the cascade — paper -->
 <section id="source">
-  <div class="micro r">the cascade</div>
-  <p class="w r s2">Sustained stress quiets the same axis in every&nbsp;body.</p>
-  <div class="mline r s3">hers · estrogen and progesterone fall<br>
-  his · testosterone drops 15% after one week of short&nbsp;sleep</div>
-  <p class="w r s4">A shame with no source they can&nbsp;name.</p>
-  <h2 class="d1 r s5">It has a source.</h2>
-  <p class="after r s5">The 11pm meeting. Three months in a&nbsp;row.</p>
+  <div class="inner-c">
+    <div class="kicker r">the cascade</div>
+    <p class="w r s2">Sustained stress quiets the same axis in every&nbsp;body.</p>
+    <div class="mline r s3">hers · estrogen and progesterone fall<br>
+    his · testosterone drops 15% after one week of short&nbsp;sleep</div>
+    <p class="w r s4">A shame with no source they can&nbsp;name.</p>
+    <h2 class="d1 r s5">It has a source.</h2>
+    <p class="after r s5">The 11pm meeting. Three months in a&nbsp;row.</p>
+  </div>
 </section>
 
-<!-- S3 · the evidence -->
+<!-- S4 · the evidence — card -->
 <section id="evidence">
-  <div class="micro r">the evidence</div>
-  <h2 class="d2 r s2">The body has been saying it all along. The science finally&nbsp;agrees.</h2>
-  <div class="mline r s3">mind and body worked together · nearly twice the effect<br>
-  smd 0.73 · 183 randomized trials · 22,811 people</div>
-  <div class="rule r s4"></div>
-  <div class="mline r s4">sexual health · named by 0 of 12 major frameworks · fortify names&nbsp;it</div>
+  <div class="inner-c">
+    <div class="kicker r">the evidence</div>
+    <h2 class="d2 r s2">The body has been saying it all along. The science finally&nbsp;agrees.</h2>
+    <div class="mline r s3">mind and body worked together · nearly twice the effect<br>
+    smd 0.73 · 183 randomized trials · 22,811 people</div>
+    <div class="rule r s4"></div>
+    <div class="mline r s4">sexual health · named by 0 of 12 major frameworks · fortify names&nbsp;it</div>
+  </div>
 </section>
 
-<!-- S4 · the work -->
+<!-- S5 · the work — paper -->
 <section id="work">
-  <div class="micro r">the work</div>
-  <p class="oneliner r s2">Fortify™ starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible.</p>
-  <div class="moves">
-    <div class="r s2">Align.</div>
-    <div class="m2 r s3">Investigate.</div>
-    <div class="m3 r s4">Strengthen.</div>
-    <div class="m4 r s5">Move forward.</div>
+  <div class="inner-c">
+    <div class="kicker r">the work</div>
+    <p class="oneliner r s2">Fortify™ starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible.</p>
+    <div class="moves">
+      <div class="m1 r s2">Align.</div>
+      <div class="m2 r s3">Investigate.</div>
+      <div class="m3 r s4">Strengthen.</div>
+      <div class="m4 r s5">Move forward.</div>
+    </div>
+    <p class="w r s5">Four moves. Six months. One person beside&nbsp;you.</p>
   </div>
-  <p class="w r s5">Four moves. Six months. One person beside&nbsp;you.</p>
 </section>
 
-<!-- S5 · the terms -->
+<!-- interstitial · a breath instead of a paragraph -->
+<div class="interstitial" data-dark style="background-image:url('C-photos/new-zealand-1600.jpg')">
+  <div class="scrim2"></div>
+  <div class="cap">the other side is real · glacier landing, new zealand</div>
+</div>
+
+<!-- S6 · the terms — paper -->
 <section id="close">
-  <div class="guide r">
-    <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
-    <div>
-      <div class="name">Jeremy Runge</div>
-      <div class="cred">pacifica, ca · ex-apple · 20 years operating · 60,000+ led</div>
+  <div class="inner-c">
+    <div class="guide r">
+      <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
+      <div>
+        <div class="name">Jeremy Runge</div>
+        <div class="cred">pacifica, ca · ex-apple · 20 years operating · 60,000+ led</div>
+      </div>
     </div>
+    <div class="terms">
+      <span class="r s2">begins at <b>$60,000</b> · depth determined by you</span>
+      <span class="r s3">a handful of clients a year · not a limitation, a <b>commitment</b></span>
+      <span class="r s4"><b>private.</b> everything. always.</span>
+    </div>
+    <p class="closer r s4">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
   </div>
-  <div class="terms">
-    <span class="r s2">begins at <b>$60,000</b> · depth determined by you</span>
-    <span class="r s3">a handful of clients a year · not a limitation, a <b>commitment</b></span>
-    <span class="r s4"><b>private.</b> everything. always.</span>
-  </div>
-  <div class="course r s4"></div>
-  <a class="cta-slab r s5" href="index.html#intake">Start the conversation →</a>
-  <p class="closer r s5">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+  <a class="big-cta" data-dark href="index.html#intake">
+    <span class="l1">a short conversation · no pitch · you'll both know</span>
+    <span class="l2">Start the conversation →</span>
+  </a>
   <div class="foot"><a href="index.html">jeremyrunge.com</a> · <a href="#edit">edit</a></div>
 </section>
 
@@ -401,12 +456,19 @@ requestAnimationFrame(()=>requestAnimationFrame(()=>{
   svg.querySelectorAll(".net-link").forEach(l=>l.style.strokeDashoffset=0);
   setTimeout(()=>{ if(!reduced) svg.classList.add("live"); },2600);
 }));
-/* ---------- reveals (poll + scroll: pane-safe) ---------- */
+/* ---------- reveals + scroll-aware chrome (poll + scroll: pane-safe) ---------- */
+const darkBands=[...document.querySelectorAll("[data-dark]")];
 function tick(){
   const h=innerHeight;
-  document.querySelectorAll(".r:not(.vis), .course:not(.vis)").forEach(el=>{
+  document.querySelectorAll(".r:not(.vis)").forEach(el=>{
     if(el.getBoundingClientRect().top<h*0.88)el.classList.add("vis");
   });
+  const y=40;
+  const overDark=darkBands.some(b=>{
+    const r=b.getBoundingClientRect();
+    return r.top<=y&&r.bottom>=y;
+  });
+  document.body.classList.toggle("light-chrome",!overDark);
 }
 addEventListener("scroll",tick,{passive:true});
 setInterval(tick,250); tick();
@@ -427,9 +489,10 @@ addEventListener("hashchange",()=>{
 function initEditMode(){
   document.body.classList.add("editing");
   /* SVG network + detail card excluded: their text lives in the domains[] data, not markup */
-  const sels=[".micro",".d1",".d2",".w",".mline",".oneliner",".moves div",".after",
-    ".guide .name",".guide .cred",".terms span",".cta-ghost",".cta-slab",".closer",
-    ".afford",".strip span",".foot a"];
+  const sels=[".databar",".hero h1",".hero .sub",".crossing span",".herolink",".kicker",
+    ".d1",".d2",".w",".mline",".oneliner",".moves div",".after",".cap",
+    ".guide .name",".guide .cred",".terms span",".big-cta .l1",".big-cta .l2",
+    ".closer",".afford",".strip span",".foot a"];
   const seen=new Set();
   sels.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{
     if(seen.has(el)||el.closest(".net-detail"))return;
@@ -604,7 +667,7 @@ function serializePage(){
   });
   clone.querySelectorAll(".edit-ui,.edit-help,.edit-toast").forEach(el=>el.remove());
   const b=clone.querySelector("body");
-  if(b)b.classList.remove("editing");
+  if(b){b.classList.remove("editing");b.classList.remove("light-chrome")}
   clone.querySelectorAll(".vis").forEach(el=>el.classList.remove("vis"));
   const s=clone.querySelector("#netSvg");
   if(s){s.innerHTML="";s.classList.remove("live")}
