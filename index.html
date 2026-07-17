@@ -865,7 +865,9 @@ function go(id){
 document.querySelectorAll('[data-page]').forEach(el=>{
   el.addEventListener('click',e=>{ go(el.getAttribute('data-page')); });
 });
-watchChrome('home');
+const deep = location.hash.replace('#','');
+if(deep && document.getElementById(deep)){ go(deep); } else { watchChrome('home'); }
+addEventListener('hashchange',()=>{ const h=location.hash.replace('#',''); if(h && document.getElementById(h)) go(h); });
 </script>
 </body>
 </html>

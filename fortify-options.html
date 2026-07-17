@@ -3,426 +3,374 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fortify™ · Three Serious Pages — Jeremy Runge</title>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,900;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<title>Fortify™ · Jeremy Runge</title>
+<meta name="description" content="Every part of you affects every other part. A one-to-one practice across ten domains. Six months. One person beside you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#EFEEE7; --card:#F6F5EE; --dusk:#242A32; --dusk-2:#1D2229;
-  --land:#26251F; --body:#43423A; --silver:#B7B1A4; --hairline:#D8D4C6;
+  --land:#26251F; --body:#43423A; --silver:#B7B1A4;
   --slate:#46606F; --slate-l:#7D93A1; --sound:#AFC6D0; --red:#D14625;
+  --hair:rgba(239,238,231,.14);
+  --disp:'Schibsted Grotesk',sans-serif; --serif:'Newsreader',serif;
+  --mono:'IBM Plex Mono',monospace; --sans:'Instrument Sans',sans-serif;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--paper);color:var(--body);font-family:"Instrument Sans",sans-serif;line-height:1.6}
-.mono{font-family:"IBM Plex Mono",monospace}
-h1,h2,h3,.sub{text-wrap:balance}
-.opt{display:none}.opt.on{display:block}
-.b{display:inline}
-@media(min-width:700px){.b{display:block}}
-.crossing{position:relative;height:2px;margin:26px 0 0;
-  background-image:linear-gradient(to right,var(--red) 0 14px,transparent 14px 22px);
-  background-size:22px 2px;background-repeat:repeat-x;max-width:280px;
-  animation:drawline 1s ease-out .25s both}
-@keyframes drawline{from{max-width:0}to{max-width:280px}}
-.crossing span{position:absolute;right:-2px;top:-15px;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--red)}
-.r{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dusk);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono)}
+
+/* chrome — bare strip */
+.strip{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
+  color:var(--silver);background:linear-gradient(to bottom,rgba(29,34,41,.85),rgba(29,34,41,0));pointer-events:none}
+.strip a{pointer-events:auto}
+.strip a:hover{color:var(--sound)}
+
+section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:96px 6vw;position:relative}
+.micro{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:lowercase;color:var(--slate-l);margin-bottom:26px}
+
+/* type */
+.d1{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.02;
+  font-size:clamp(2.3rem,6.2vw,4.6rem);text-wrap:balance}
+.d2{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.04;
+  font-size:clamp(2rem,5vw,3.6rem);text-wrap:balance}
+.w{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--silver);
+  font-size:clamp(1.15rem,2.4vw,1.55rem);line-height:1.5;text-wrap:balance}
+.mline{font-family:var(--mono);font-size:clamp(.72rem,1.4vw,.85rem);letter-spacing:.08em;
+  color:var(--slate-l);line-height:2.1;text-transform:lowercase}
+
+/* reveals */
+.r{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 .r.vis{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.crossing{animation:none}.r{opacity:1;transform:none;transition:none}}
-.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);text-transform:lowercase;letter-spacing:.05em;margin-bottom:18px}
-.cta{display:block;text-align:center;background:var(--land);color:var(--paper);text-decoration:none;padding:26px 20px;cursor:pointer}
-.cta .l1{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--silver);text-transform:lowercase;display:block;margin-bottom:8px}
-.cta .l2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(22px,6vw,32px)}
-.fine{text-align:center;font-family:"Newsreader",serif;font-style:italic;font-size:15px;color:var(--slate);padding:22px 20px 30px}
-footer{padding:26px 20px 96px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--body);text-transform:lowercase;display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--hairline)}
+.r.s2{transition-delay:.18s}.r.s3{transition-delay:.36s}.r.s4{transition-delay:.54s}.r.s5{transition-delay:.72s}
 
-/* ============ ONE · THE PRACTICE ============ */
-.prac .hero{position:relative;min-height:82svh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--dusk-2)}
-.prac .hero .img{position:absolute;inset:0;background-image:url('C-photos/zermatt-2400.jpg');background-size:cover;background-position:center 38%}
-.prac .hero .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,30,.88) 0%,rgba(20,24,30,.56) 34%,rgba(20,24,30,.50) 74%,rgba(20,24,30,.64) 100%)}
-.prac .hero .inner{position:relative;padding:0 20px 36px;max-width:880px}
-.prac .hero .databar{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:rgba(239,238,231,.72);text-transform:lowercase;letter-spacing:.06em;margin-bottom:16px}
-.prac .hero h1{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;color:var(--paper);font-size:clamp(32px,8.6vw,64px);line-height:1}
-.prac .hero .sub{font-family:"Newsreader",serif;font-style:italic;font-weight:500;color:var(--sound);font-size:clamp(16px,4.4vw,20px);margin-top:16px;max-width:52ch}
-.prac .band{padding:60px 20px;max-width:780px;margin:0 auto}
-.prac .band h2{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;color:var(--land);font-size:clamp(24px,6.4vw,38px);line-height:1.05;margin-bottom:16px}
-.prac .band p{font-size:16.5px;line-height:1.75;max-width:60ch;margin-bottom:14px}
-.prac .band p.q{font-family:"Newsreader",serif;font-size:17.5px;color:var(--land)}
-.prac .rule{height:1px;background:var(--hairline);max-width:780px;margin:0 auto}
-.prac .phase{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--hairline)}
-.prac .phase .no{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--slate);padding-top:5px}
-.prac .phase h3{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.01em;font-size:19px;color:var(--land);margin-bottom:4px}
-.prac .phase p{font-size:15px;max-width:56ch}
-.prac .evtable{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
-.prac .evtable td{padding:11px 10px 11px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
-.prac .evtable td.l{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;width:170px;padding-top:14px}
-.prac .coach{display:grid;gap:26px;align-items:start}
-@media(min-width:700px){.prac .coach{grid-template-columns:280px 1fr}}
-.prac .coach .fig{border:1px solid var(--hairline);background:var(--card);padding:10px}
-.prac .coach .fig img{display:block;width:100%;height:auto}
-.prac .coach .fig figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);text-transform:lowercase;padding:10px 4px 2px}
-.prac .quote{padding:56px 20px;text-align:center}
-.prac .quote p{font-family:"Newsreader",serif;font-size:clamp(18px,5vw,22px);color:var(--land);max-width:38ch;margin:0 auto;line-height:1.6}
-.prac .quote .who{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;margin-top:14px}
-.prac .terms{max-width:640px;margin:0 auto;text-align:center;border:1px solid var(--hairline);background:var(--card);padding:36px 22px}
-.prac .terms .p{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(30px,8vw,44px);color:var(--land)}
-.prac .terms .spec{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--body);text-transform:lowercase;line-height:2.1;margin-top:12px}
-.prac .terms .note{font-family:"Newsreader",serif;font-style:italic;font-size:15px;color:var(--slate);margin-top:16px}
+/* S1 hero */
+#hero{padding-top:110px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;max-width:1280px;margin:0 auto;width:100%}
+@media(min-width:980px){.hero-grid{grid-template-columns:.9fr 1.1fr;gap:4vw}}
+.hero-sub{margin-top:26px}
+.cta-ghost{display:inline-block;margin-top:34px;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;
+  text-transform:lowercase;color:var(--sound);border:1px solid var(--slate);padding:14px 22px;transition:all .3s}
+.cta-ghost:hover{background:var(--slate);color:var(--paper)}
+.afford{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--slate-l);text-transform:lowercase}
 
-/* ============ TWO · THE LETTER ============ */
-.letter{background:var(--paper)}
-.letter .page{max-width:660px;margin:0 auto;padding:100px 22px 40px}
-.letter .dateline{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);text-transform:lowercase;letter-spacing:.06em;margin-bottom:44px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.letter p{font-family:"Newsreader",serif;font-size:19px;line-height:1.85;color:var(--body);margin-bottom:26px}
-.letter p b{color:var(--land);font-weight:600}
-.letter .pull{font-style:italic;color:var(--slate);padding-left:22px;border-left:2px solid var(--hairline)}
-.letter .method{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:17px;color:var(--land);letter-spacing:.01em}
-.letter .sig{display:flex;align-items:center;gap:18px;margin-top:44px;padding-top:30px;border-top:1px solid var(--hairline)}
-.letter .sig img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--hairline)}
-.letter .sig .name{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.01em;font-size:19px;color:var(--land)}
-.letter .sig .role{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);text-transform:lowercase;margin-top:4px;line-height:1.8}
+/* network */
+.net-wrap{width:100%;max-width:660px;margin:0 auto;aspect-ratio:1;position:relative}
+.net-wrap svg{width:100%;height:100%;overflow:visible;display:block}
+.net-link{stroke:var(--slate-l);stroke-width:.9;opacity:var(--o,.18);fill:none;
+  transition:opacity .32s ease,stroke .32s ease}
+.net-link.secondary{stroke-width:1.6;--o:.4}
+.net-link.keystone{stroke-width:2.2;--o:.8}
+.net-link.highlight{stroke:var(--sound);stroke-width:2.8;opacity:1!important;animation:none!important}
+svg.live .net-link{animation:breathe 8s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:var(--o,.18)}50%{opacity:calc(var(--o,.18)*1.7)}}
+.net-node-group{cursor:pointer}
+.net-node{fill:var(--dusk-2);stroke:var(--slate-l);stroke-width:1.2;r:34px;
+  transition:fill .28s,stroke .28s,stroke-width .28s}
+.net-node-group:hover .net-node,.net-node-group.hover .net-node{fill:var(--slate);stroke:var(--sound)}
+.net-node-group.connected .net-node{stroke:var(--sound);stroke-width:2}
+.net-code{font-family:var(--mono);font-size:13px;font-weight:500;fill:var(--slate-l);
+  text-anchor:middle;dominant-baseline:middle;pointer-events:none;transition:fill .28s}
+.net-node-group:hover .net-code,.net-node-group.hover .net-code{fill:var(--paper)}
+.net-label{font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;
+  fill:var(--silver);pointer-events:none;transition:opacity .28s}
+.net-wrap.has-hover .net-link:not(.highlight){opacity:.05!important;animation:none}
+.net-wrap.has-hover .net-node-group:not(.hover):not(.connected){opacity:.25}
+@media(max-width:700px){
+  .net-node{r:46px;stroke-width:2}
+  .net-code{font-size:23px}
+  .net-label{font-size:23px}
+  .net-link{stroke-width:1.6}
+  .net-link.secondary{stroke-width:2.6}
+  .net-link.keystone{stroke-width:3.6}
+  .net-link.highlight{stroke-width:4.4}
+}
 
-/* ============ THREE · THE MEMORANDUM ============ */
-.memo{background:var(--paper)}
-.memo .doc{max-width:740px;margin:0 auto;padding:100px 20px 40px}
-.memo .dochead{border-bottom:2px solid var(--land);padding-bottom:20px}
-.memo .dochead .dl{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);text-transform:lowercase;letter-spacing:.08em;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.memo .dochead .t{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(28px,7.6vw,44px);color:var(--land);line-height:1}
-.memo section{padding:28px 0;border-bottom:1px solid var(--hairline)}
-.memo .sn{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--slate);letter-spacing:.08em;margin-bottom:10px}
-.memo h3{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.01em;font-size:18px;color:var(--land);margin-bottom:10px}
-.memo p{font-size:15px;line-height:1.75;max-width:62ch;margin-bottom:11px}
-.memo p em{font-family:"Newsreader",serif;color:var(--slate)}
-.memo table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
-.memo td{padding:9px 10px 9px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
-.memo td.l{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--slate);text-transform:lowercase;width:165px;padding-top:12px}
-.memo ul{margin:4px 0 8px 18px}
-.memo li{font-size:15px;line-height:1.7;margin-bottom:7px;max-width:60ch}
-.memo .inv{font-family:"Schibsted Grotesk",sans-serif;font-weight:900;letter-spacing:-0.02em;font-size:clamp(26px,7vw,38px);color:var(--land);margin-bottom:8px}
+/* detail card */
+.net-detail{position:fixed;bottom:14px;left:14px;right:14px;max-width:540px;margin:0 auto;z-index:50;
+  background:var(--dusk-2);border:1px solid var(--hair);padding:22px 26px 20px;
+  transform:translateY(16px);opacity:0;pointer-events:none;transition:opacity .32s,transform .32s;
+  box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.net-detail.show{opacity:1;transform:none;pointer-events:auto}
+.net-detail .micro{margin-bottom:8px}
+.net-detail h4{font-family:var(--disp);font-weight:900;font-size:1.35rem;letter-spacing:-0.02em;margin-bottom:8px}
+.net-detail p{font-family:var(--serif);font-size:.98rem;line-height:1.6;color:var(--silver)}
+.net-detail .close{position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.7rem;color:var(--slate-l);letter-spacing:.1em}
 
-/* switcher (review tool) */
-.pager{position:fixed;bottom:0;left:0;right:0;z-index:20;background:var(--land);display:flex;flex-wrap:wrap;justify-content:center;gap:2px;padding:8px 6px;border-top:2px solid var(--red)}
-.pager .lbl{color:var(--slate-l);font-family:"IBM Plex Mono",monospace;font-size:9.5px;padding:4px 8px 4px 2px;border-right:1px solid rgba(239,238,231,.2);margin-right:4px}
-.pager button{appearance:none;background:none;border:none;color:var(--silver);font-family:"IBM Plex Mono",monospace;font-size:10px;text-transform:lowercase;padding:4px 9px;cursor:pointer;letter-spacing:.03em}
-.pager button.on{color:var(--paper);background:var(--slate)}
+/* S2 cascade */
+#source{text-align:center;align-items:center}
+#source .w{max-width:640px}
+#source .mline{margin:30px 0}
+#source .d1{margin-top:44px}
+#source .after{margin-top:26px;color:var(--paper);font-style:italic;font-family:var(--serif);
+  font-size:clamp(1.3rem,2.8vw,1.8rem)}
+
+/* S3 evidence */
+#evidence{text-align:center;align-items:center;background:var(--dusk-2)}
+#evidence .d2{max-width:820px}
+#evidence .mline{margin-top:40px}
+.rule{width:56px;border-top:1px solid var(--hair);margin:34px auto 0}
+
+/* S4 the work */
+#work{text-align:center;align-items:center}
+.oneliner{font-family:var(--serif);font-size:clamp(1rem,1.9vw,1.2rem);line-height:1.7;color:var(--silver);
+  max-width:620px;text-wrap:balance}
+.moves{margin:52px 0 34px}
+.moves div{font-family:var(--disp);font-weight:900;letter-spacing:-0.02em;line-height:1.12;
+  font-size:clamp(2.6rem,7.4vw,5.2rem)}
+.moves .m2{color:var(--sound)}.moves .m3{color:var(--slate-l)}.moves .m4{color:var(--silver)}
+
+/* S5 close */
+#close{text-align:center;align-items:center;background:var(--dusk-2);padding-bottom:70px}
+.guide{display:flex;align-items:center;gap:18px;margin-bottom:46px;text-align:left}
+.guide img{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:center 20%;
+  border:1px solid var(--hair)}
+.guide .name{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-0.01em}
+.guide .cred{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--slate-l);
+  text-transform:lowercase;margin-top:5px}
+.terms{display:flex;flex-direction:column;gap:14px;margin-bottom:56px}
+.terms span{font-family:var(--mono);font-size:clamp(.74rem,1.5vw,.88rem);letter-spacing:.08em;
+  color:var(--silver);text-transform:lowercase}
+.terms b{color:var(--paper);font-weight:500}
+.course{height:2px;max-width:0;width:240px;background:var(--red);margin:0 auto 56px;transition:max-width 1.4s cubic-bezier(.2,.7,.2,1)}
+.course.vis{max-width:240px}
+.cta-slab{display:inline-block;background:var(--paper);color:var(--land);font-family:var(--disp);
+  font-weight:700;font-size:clamp(1.05rem,2.2vw,1.3rem);letter-spacing:-0.01em;
+  padding:22px 44px;transition:background .3s,color .3s}
+.cta-slab:hover{background:var(--sound)}
+.closer{margin-top:34px;font-family:var(--serif);font-style:italic;color:var(--silver);
+  font-size:1rem;line-height:1.6}
+.foot{margin-top:70px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--slate);text-transform:lowercase}
+.foot a:hover{color:var(--sound)}
+
+@media(prefers-reduced-motion:reduce){
+  .r{opacity:1;transform:none;transition:none}
+  svg.live .net-link{animation:none}
+  .course{max-width:240px;transition:none}
+}
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     ONE · THE PRACTICE
-     Model: how a serious specialist practice presents itself.
-     The page answers a diligent reader's questions in order,
-     completely, and never sells. Confirmation for the referred. -->
-<!-- ═══════════════════════════════════════════════════════════
-     THE ANSWER · recognition open → the letter → quiet diligence
-     Tuned for: 60/40 F/M, 40-55, $250K, referred. -->
-<div class="opt on letter" id="rec">
-  <div style="background:var(--dusk-2);color:var(--paper)">
-    <div style="min-height:60svh;display:flex;flex-direction:column;justify-content:center;padding:70px 22px 40px;max-width:720px;margin:0 auto">
-      <div class="mono" style="font-size:10.5px;color:var(--slate-l);text-transform:lowercase;letter-spacing:.06em;margin-bottom:30px">fortify™ · from jeremy runge · pacifica, ca</div>
-      <p style="font-family:'Newsreader',serif;font-size:clamp(22px,6vw,31px);line-height:1.5;color:var(--paper);max-width:26ch;margin-bottom:16px">The trajectory looks right from the outside.</p>
-      <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(22px,6vw,31px);line-height:1.5;color:var(--sound);max-width:26ch;margin-bottom:16px">Everyone gets a version of you. Almost nobody gets all of it.</p>
-      <p style="font-family:'Newsreader',serif;font-size:clamp(22px,6vw,31px);line-height:1.5;color:var(--paper);max-width:26ch">And whoever sent you here saw something you haven't said out loud yet.</p>
-      <div class="crossing"><span>270°</span></div>
+<div class="strip">
+  <a href="index.html">← jeremy runge</a>
+  <span>fortify™</span>
+</div>
+
+<!-- S1 · the premise, alive -->
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="micro r">fortify™ · a one-to-one practice</div>
+      <h1 class="d1 r s2">Every part of you affects every other&nbsp;part.</h1>
+      <div class="mline hero-sub r s3">ten domains · twenty-two documented connections</div>
+      <a class="cta-ghost r s4" href="index.html#intake">start the conversation →</a>
     </div>
-  </div>
-
-  <div class="page" style="padding-top:56px">
-    <p>If someone you trust pointed you to this page, they probably didn't describe a framework. They described a conversation. Let me try to have it with you here, honestly, until we can have it for real.</p>
-
-    <p>I spent twenty years running rooms where the stakes were real. Thirteen at Apple, responsible for the sales and people operating model across five hundred and fifty stores. Then a nine-hundred-million-dollar P&amp;L that needed turning, and turned. <b>I know what it looks like when everything on paper says success and something essential is still missing.</b> I know what it costs to be the one holding everything, for everyone, and to do it so well that nobody thinks to ask how you are.</p>
-
-    <p>I lived my own version of the gap. Across identity, performance, and the parts of life most frameworks won't touch: the body, the relationship, the money, the desire, the question of who is left when the role comes off. When I went looking for help, nothing went far enough. The coaching stopped at the calendar. So I went through my own reckoning, and then I built the thing I had needed. For some of us, that work also means untangling what we were told to be from who we actually are. That is welcome here. It's the point.</p>
-
-    <p class="pull">"Fortify starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible."</p>
-
-    <p>The premise is simple, and the evidence is unambiguous: every part of you affects every other part. Working body and mind together produces nearly double the effect of working either alone, across 183 randomized controlled trials. Almost nobody builds coaching on that finding. I did. Ten domains, mapped with validated instruments, including the ones every other framework politely ignores.</p>
-
-    <p>Six months. Two hours together every week, and I'm with you between sessions, because the real material surfaces on a Tuesday at six in the morning, not on schedule. The method is four words: <span class="method">Align. Investigate. Strengthen. Move forward.</span> We find the keystone, the place where small shifts move everything, and we build from the bedrock up.</p>
-
-    <p>Engagements begin at sixty thousand dollars, with the depth determined by you. I won't pretend that's a small decision. It isn't, and it shouldn't be. It's priced like what it is: six months of my full attention on the whole of your life, with a roster I keep small on purpose. If someone helps you make decisions like this one, <a href="#" data-opt="memo" style="color:var(--slate)">the engagement memorandum</a> lays out everything in a form you can share.</p>
-
-    <p>If any of this reads like your own life, write back. One short conversation: what's true right now, what you're building toward, and whether this is the right moment. There's no pitch. If it's the right fit, we'll both know.</p>
-
-    <div class="sig">
-      <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
-      <div>
-        <div class="name">Jeremy Runge</div>
-        <div class="role">founder &amp; principal, reck the fort · ex-apple · pacifica, ca</div>
+    <div class="r s3">
+      <div class="net-wrap" id="netWrap">
+        <svg viewBox="0 0 800 800" id="netSvg" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
-    </div>
-    <div class="crossing"><span>270°</span></div>
-  </div>
-
-  <div style="max-width:660px;margin:0 auto;padding:30px 22px 10px;text-align:center">
-    <p style="font-family:'Newsreader',serif;font-size:clamp(17px,4.8vw,20px);color:var(--land);line-height:1.65;max-width:40ch;margin:0 auto">"Jeremy is an innovative and deeply people-centered leader. His thoughtful coaching style, collaborative approach, and patient leadership have made a lasting impact."</p>
-    <div class="mono" style="font-size:10.5px;color:var(--slate);text-transform:lowercase;margin-top:14px">alyssa edwards · senior operations executive</div>
-  </div>
-
-  <div style="max-width:660px;margin:0 auto;padding:34px 22px 44px">
-    <div class="mono" style="font-size:10.5px;color:var(--slate);text-transform:lowercase;letter-spacing:.05em;line-height:2.2;border-top:1px solid var(--hairline);padding-top:22px">
-      private, in its entirety · not therapy: for functional adults who are already well<br>
-      grounded in 183 randomized controlled trials · validated instruments throughout<br>
-      <a href="#" data-opt="memo" style="color:var(--slate)">the full engagement memorandum →</a>
+      <div class="afford" style="text-align:center">touch any domain</div>
     </div>
   </div>
+</section>
 
-  <a class="cta" href="https://jeremyrunge.com/fortify-intake">
-    <span class="l1">one short conversation · no pitch</span>
-    <span class="l2">Write back</span>
-  </a>
-  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+<!-- S2 · the source -->
+<section id="source">
+  <div class="micro r">the cascade</div>
+  <p class="w r s2">Sustained stress quiets the same axis in every&nbsp;body.</p>
+  <div class="mline r s3">hers · estrogen and progesterone fall<br>
+  his · testosterone drops 15% after one week of short&nbsp;sleep</div>
+  <p class="w r s4">A shame with no source they can&nbsp;name.</p>
+  <h2 class="d1 r s5">It has a source.</h2>
+  <p class="after r s5">The 11pm meeting. Three months in a&nbsp;row.</p>
+</section>
 
-  <footer><span>fortify™ · jeremy runge</span><span>pacifica, ca · 270° w</span></footer>
-</div>
+<!-- S3 · the evidence -->
+<section id="evidence">
+  <div class="micro r">the evidence</div>
+  <h2 class="d2 r s2">The body has been saying it all along. The science finally&nbsp;agrees.</h2>
+  <div class="mline r s3">mind and body worked together · nearly twice the effect<br>
+  smd 0.73 · 183 randomized trials · 22,811 people</div>
+  <div class="rule r s4"></div>
+  <div class="mline r s4">sexual health · named by 0 of 12 major frameworks · fortify names&nbsp;it</div>
+</section>
 
-<div class="opt prac" id="prac">
+<!-- S4 · the work -->
+<section id="work">
+  <div class="micro r">the work</div>
+  <p class="oneliner r s2">Fortify™ starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible.</p>
+  <div class="moves">
+    <div class="r s2">Align.</div>
+    <div class="m2 r s3">Investigate.</div>
+    <div class="m3 r s4">Strengthen.</div>
+    <div class="m4 r s5">Move forward.</div>
+  </div>
+  <p class="w r s5">Four moves. Six months. One person beside&nbsp;you.</p>
+</section>
 
-  <div class="hero">
-    <div class="img"></div>
-    <div class="scrim"></div>
-    <div class="inner">
-      <div class="databar">fortify™ · executive coaching · six months · 1:1 · pacifica, ca</div>
-      <h1><span class="b">Coaching for the whole</span> <span class="b">of who you&nbsp;are.</span></h1>
-      <p class="sub">The existence you always knew was possible isn't found by optimizing harder. It's found by going through the reckoning — with someone beside you — and rebuilding from what's actually true.</p>
-      <div class="crossing"><span>270°</span></div>
+<!-- S5 · the terms -->
+<section id="close">
+  <div class="guide r">
+    <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
+    <div>
+      <div class="name">Jeremy Runge</div>
+      <div class="cred">pacifica, ca · ex-apple · 20 years operating · 60,000+ led</div>
     </div>
   </div>
-
-  <div class="band r">
-    <div class="kicker">who this is for</div>
-    <p class="q">You've led teams. You've built things. The trajectory looks right from the outside. But there's a version of you — sharper, freer, more fully alive — that none of it has made room for yet. That's not a character flaw. That's the work that hasn't happened yet. And there's a way through it.</p>
-    <p>For some of us, that work also means untangling what we were told to be from who we actually are.</p>
+  <div class="terms">
+    <span class="r s2">begins at <b>$60,000</b> · depth determined by you</span>
+    <span class="r s3">a handful of clients a year · not a limitation, a <b>commitment</b></span>
+    <span class="r s4"><b>private.</b> everything. always.</span>
   </div>
+  <div class="course r s4"></div>
+  <a class="cta-slab r s5" href="index.html#intake">Start the conversation →</a>
+  <p class="closer r s5">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
+  <div class="foot"><a href="index.html">jeremyrunge.com</a></div>
+</section>
 
-  <div class="rule"></div>
-
-  <div class="band r">
-    <div class="kicker">the premise</div>
-    <h2>Every part of you affects every other part.</h2>
-    <p>Your physical health shapes your cognitive performance. Your relationships shape your leadership. Your sense of purpose shapes your financial decisions. Fortify is built on that premise, completely: ten domains, three layers, and twenty-two documented connections, grounded in 183 randomized controlled trials.</p>
-    <p>It is also built on the understanding that a leader's full life — including the parts most frameworks won't touch, and the identities most rooms won't hold — shapes their performance, their presence, and their potential.</p>
-    <p class="q">Not a checklist. Not a program. A living architecture — yours.</p>
-  </div>
-
-  <div class="rule"></div>
-
-  <div class="band r">
-    <div class="kicker">the work</div>
-    <div class="phase"><span class="no">·01</span><div><h3>Align</h3><p>Map your full domain network. Find your keystone — the place where small shifts move everything.</p></div></div>
-    <div class="phase"><span class="no">·02</span><div><h3>Investigate</h3><p>Go where the map points. The places that have been managed, not addressed.</p></div></div>
-    <div class="phase"><span class="no">·03</span><div><h3>Strengthen</h3><p>Build the architecture — identity, capacity, relationships, performance — from the bedrock up.</p></div></div>
-    <div class="phase"><span class="no">·04</span><div><h3>Move forward</h3><p>Leave knowing the reckoning was worth it.</p></div></div>
-  </div>
-
-  <div class="rule"></div>
-
-  <div class="band r">
-    <div class="kicker">the evidence</div>
-    <table class="evtable">
-      <tr><td class="l">foundation</td><td>A 2026 network meta-analysis of 183 randomized controlled trials, 22,811 participants. Combined physical and psychological work produces nearly double the effect of either alone (SMD 0.73 vs ≈0.45). Fortify is built to implement that finding.</td></tr>
-      <tr><td class="l">coaching</td><td>Psychologically-informed executive coaching shows g = 0.59 across 37 randomized trials.</td></tr>
-      <tr><td class="l">assessment</td><td>Domains are mapped with validated instruments — MHC-SF, the VanderWeele Flourishing Index, the CFPB Financial Wellbeing Scale, the PsyCap Questionnaire — not intuition.</td></tr>
-      <tr><td class="l">scope</td><td>The domains most frameworks omit are in scope here, deliberately. Sexual health appears in none of the twelve major wellbeing frameworks. Financial identity in almost none. They appear at every executive table.</td></tr>
-    </table>
-  </div>
-
-  <div class="rule"></div>
-
-  <div class="band r">
-    <div class="kicker">the coach</div>
-    <div class="coach">
-      <figure class="fig"><img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge" loading="lazy"><figcaption>jeremy runge · pacifica, ca</figcaption></figure>
-      <div>
-        <p>Jeremy Runge has led as an executive at Apple and GoPuff — building and restructuring operations and teams through growth, change, and the moments that test what leaders are actually made of. Thirteen years at Apple running the sales and people operating model across 550+ stores in 25 countries. A $900M P&amp;L returned to growth.</p>
-        <p>He knows what it looks like when everything on paper says success and something essential is still missing. He's lived his own version of that gap — across identity, performance, and the parts of life most frameworks won't touch. Fortify is what he built because nothing else went far enough.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="quote r">
-    <p>"He has this rare ability to understand the whole person — not just the role or the performance — and he challenges leaders to bring every truth of themselves forward. A truth-teller in the best way."</p>
-    <div class="who">teaubrian clark · vision, people &amp; culture leader</div>
-  </div>
-
-  <div class="band r" style="padding-top:8px">
-    <div class="kicker">confidentiality</div>
-    <p>This work is private. Nothing about an engagement — including its existence — is shared, referenced, or used without written permission. For those who need a further degree of discretion, <a href="https://jeremyrunge.com/dedicated" style="color:var(--slate)">a fully dedicated, fully private way to work together</a> exists.</p>
-  </div>
-
-  <div class="band r" style="padding-top:0">
-    <div class="terms">
-      <div class="kicker" style="text-align:center">investment</div>
-      <div class="p">Begins at $60,000</div>
-      <div class="spec">six months · weekly two-hour connects · full asynchronous support<br>the depth is determined by you</div>
-      <div class="note">Jeremy works with a small number of clients at any given time. Not as a limitation — as a commitment.</div>
-    </div>
-  </div>
-
-  <div class="band r" style="padding-top:0">
-    <div class="kicker">the conversation</div>
-    <p>The application is a short conversation — what's true right now, what you're building toward, and whether this is the right moment. There's no pitch. If it's the right fit, you'll both know.</p>
-  </div>
-
-  <a class="cta" href="https://jeremyrunge.com/fortify-intake">
-    <span class="l1">thirty minutes · no pitch</span>
-    <span class="l2">Request the conversation</span>
-  </a>
-  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
-
-  <footer><span>fortify™ · jeremy runge</span><span>pacifica, ca · 270° w</span></footer>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     TWO · THE LETTER
-     Model: the founder's letter. One voice, first person,
-     beginning to end. The writing itself is the proof of the
-     coaching. Nothing on the page but the letter. -->
-<div class="opt letter" id="letter">
-  <div class="page">
-    <div class="dateline"><span>from jeremy runge</span><span>pacifica, ca · 270° w</span></div>
-
-    <p>You found this page for a reason. Maybe someone you trust sent it. Maybe it was two in the morning and you were not sleeping again. Either way, I'll be direct with you, because I suspect you're tired of people who aren't.</p>
-
-    <p>I spent twenty years running rooms where the stakes were real. Thirteen of them at Apple, responsible for the sales and people operating model across five hundred and fifty stores. Then a nine-hundred-million-dollar P&amp;L that needed turning, and turned. I know what the view looks like from the top of the org chart. <b>And I know what it looks like when everything on paper says success and something essential is still missing.</b></p>
-
-    <p>I know because I lived it. Across identity, performance, and the parts of life most frameworks won't touch. When I finally went looking for help, nothing went far enough. The coaching stopped at the calendar. The therapy stopped at the diagnosis. Nobody would work on the whole of it — the body, the marriage, the money, the desire, the question of who is left when the title comes off. So I went through my own reckoning, and then I built the thing I had needed.</p>
-
-    <p class="pull">"Fortify starts at the core — the person — and unlocks the performance, the potential, and the peace, creating the existence you always knew was possible."</p>
-
-    <p>The premise is simple, and the research is unambiguous: every part of you affects every other part. Working body and mind together produces nearly double the effect of working either alone. That finding sits on 183 randomized controlled trials. It is the strongest signal in wellbeing science, and almost nobody builds coaching on it. I did — ten domains, twenty-two documented connections, mapped with validated instruments, including the domains every other framework politely ignores.</p>
-
-    <p>The work takes six months. We meet for two hours every week, and I'm with you asynchronously between them, because the real material tends to surface at six in the morning, not in session. The method is four words: <span class="method">Align. Investigate. Strengthen. Move forward.</span> We map all of you, find the keystone where small shifts move everything, go where the map points, and build from the bedrock up. You leave knowing the reckoning was worth it.</p>
-
-    <p>Engagements begin at sixty thousand dollars, and the depth is determined by you. I keep the roster small — not as a limitation, as a commitment. This work is private, entirely. And it is not therapy: it's for functional adults who are already well and want to perform and live more fully.</p>
-
-    <p>If any of this reads like your own life, write back. What happens next is one short conversation: what's true right now, what you're building toward, and whether this is the right moment. There's no pitch. If it's the right fit, we'll both know.</p>
-
-    <div class="sig">
-      <img src="C-photos/headshot-1200.jpg" alt="Jeremy Runge">
-      <div>
-        <div class="name">Jeremy Runge</div>
-        <div class="role">founder &amp; principal, reck the fort · ex-apple · pacifica, ca</div>
-      </div>
-    </div>
-    <div class="crossing"><span>270°</span></div>
-  </div>
-
-  <a class="cta" href="https://jeremyrunge.com/fortify-intake" style="margin-top:34px">
-    <span class="l1">one short conversation · no pitch</span>
-    <span class="l2">Write back</span>
-  </a>
-  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
-
-  <footer><span>fortify™ · jeremy runge</span><span>pacifica, ca · 270° w</span></footer>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════
-     THREE · THE MEMORANDUM
-     Model: the engagement document a board-level buyer expects.
-     Complete, sober, forwardable — to a spouse, an EA, a CFO.
-     Reads like paperwork from a firm that knows what it is. -->
-<div class="opt memo" id="memo">
-  <div class="doc">
-    <div class="dochead">
-      <div class="dl"><span>fortify™ · engagement memorandum</span><span>jeremy runge · pacifica, ca</span></div>
-      <div class="t">Executive coaching for the whole person.</div>
-      <div class="crossing"><span>270°</span></div>
-    </div>
-
-    <section>
-      <div class="sn">1.0 · PURPOSE</div>
-      <p>Fortify is a six-month, one-to-one coaching engagement for senior operators. It treats the person as one interconnected system — not a collection of separate dimensions — and builds the work around the whole of who someone is, not just the parts that are easy to talk about.</p>
-      <p><em>The existence you always knew was possible isn't found by optimizing harder. It's found by going through the reckoning — with someone beside you — and rebuilding from what's actually true.</em></p>
-    </section>
-
-    <section>
-      <div class="sn">2.0 · SCOPE</div>
-      <p>The engagement covers ten domains of a full life — physical, mental, cognitive, sexual, relational, social, financial, environmental, spiritual, identity — organized across three layers, from biological foundation to professional expression. The domains most frameworks omit are in scope here deliberately; they carry some of the heaviest documented weight.</p>
-      <p>This is not therapy. It is for functional adults who are already well and want to perform and live more fully. Where clinical needs surface, they are referred, not improvised.</p>
-    </section>
-
-    <section>
-      <div class="sn">3.0 · METHOD</div>
-      <p><strong>Align.</strong> The full domain network is mapped and a keystone identified — the highest-leverage point in the system, where targeted work cascades across everything else.</p>
-      <p><strong>Investigate.</strong> The work goes where the map points: the places that have been managed, not addressed.</p>
-      <p><strong>Strengthen.</strong> Identity, capacity, relationships, performance — built from the bedrock up, with physical and psychological work integrated by design.</p>
-      <p><strong>Move forward.</strong> The engagement ends with the architecture standing and the map in the client's hands.</p>
-      <p>Foundation precedes depth throughout: without a regulated nervous system, insight doesn't stick and change doesn't sustain.</p>
-    </section>
-
-    <section>
-      <div class="sn">4.0 · EVIDENCE BASE</div>
-      <table>
-        <tr><td class="l">central finding</td><td>Combined physical + psychological intervention: SMD 0.73 vs ≈0.45 for either alone. 2026 network meta-analysis; 183 randomized controlled trials; 22,811 participants.</td></tr>
-        <tr><td class="l">coaching efficacy</td><td>Psychologically-informed executive coaching: g = 0.59 across 37 randomized trials.</td></tr>
-        <tr><td class="l">instruments</td><td>MHC-SF · VanderWeele Flourishing Index · CFPB Financial Wellbeing Scale · PsyCap Questionnaire. Domain mapping uses validated measures throughout.</td></tr>
-        <tr><td class="l">foundation research</td><td>ACE Study (17,337 participants); attachment and mental health (79,722 participants, 224 studies); purpose and 14-year mortality (MIDUS).</td></tr>
-      </table>
-    </section>
-
-    <section>
-      <div class="sn">5.0 · STRUCTURE &amp; CADENCE</div>
-      <ul>
-        <li>Six months.</li>
-        <li>Weekly two-hour connects.</li>
-        <li>Full asynchronous support between sessions.</li>
-        <li>In person where it matters.</li>
-        <li>Ongoing recalibration: the map stays live as pressures move.</li>
-      </ul>
-    </section>
-
-    <section>
-      <div class="sn">6.0 · CONFIDENTIALITY</div>
-      <p>The engagement is private in its entirety. Nothing about the work — including its existence — is shared, referenced, or used without written permission. A fully dedicated, fully private engagement structure is available where circumstances require it.</p>
-    </section>
-
-    <section>
-      <div class="sn">7.0 · FIT</div>
-      <p>The engagement fits senior operators who have led and delivered, who want the challenging, honest, sometimes uncomfortable work, and who are ready to bring the whole of themselves to it. It does not fit a search for a checklist, a program, or comfort.</p>
-      <p>For some, the work also means untangling what they were told to be from who they actually are. That is welcome here, explicitly.</p>
-    </section>
-
-    <section>
-      <div class="sn">8.0 · INVESTMENT</div>
-      <div class="inv">Begins at $60,000</div>
-      <p>Six months. The depth is determined by you. Jeremy works with a small number of clients at any given time — not as a limitation, as a commitment.</p>
-    </section>
-
-    <section style="border-bottom:none">
-      <div class="sn">9.0 · BEGINNING</div>
-      <p>The application is a short conversation: what's true right now, what you're building toward, and whether this is the right moment. There is no pitch. If it's the right fit, you'll both know.</p>
-    </section>
-  </div>
-
-  <a class="cta" href="https://jeremyrunge.com/fortify-intake">
-    <span class="l1">thirty minutes · no pitch</span>
-    <span class="l2">Begin the conversation</span>
-  </a>
-  <p class="fine">If it's not the right time, it's not the right time. You'll&nbsp;know.</p>
-
-  <footer><span>fortify™ · engagement memorandum</span><span>pacifica, ca · 270° w</span></footer>
-</div>
-
-<div class="pager">
-  <span class="lbl">fortify · for the referred</span>
-  <button class="on" data-opt="rec">★ the answer</button>
-  <button data-opt="prac">1 · the practice</button>
-  <button data-opt="letter">2 · the letter</button>
-  <button data-opt="memo">3 · the memorandum</button>
+<div class="net-detail" id="netDetail">
+  <button class="close" onclick="closeDetail()">close ✕</button>
+  <span class="micro" id="ndCode"></span>
+  <h4 id="ndName"></h4>
+  <p id="ndBody"></p>
 </div>
 
 <script>
-function go(id){
-  document.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.id===id));
-  document.querySelectorAll('.pager button').forEach(b=>b.classList.toggle('on',b.getAttribute('data-opt')===id));
-  scrollTo(0,0);
+/* ---------- the network ---------- */
+const domains=[
+  {code:"ID",name:"Identity",label:"self-concept & values",
+   detail:"Who you believe yourself to be determines almost everything else. 67% of C-suite executives cover core aspects of their identity at work, a measurable psychological drain."},
+  {code:"ME",name:"Mental",label:"emotional wellbeing",
+   detail:"26% of executives report depression symptoms versus 18% of the general workforce, often while fully functional. High-performing and struggling can be true at the same time."},
+  {code:"CG",name:"Cognitive",label:"brain & focus",
+   detail:"Chronic stress causes measurable atrophy in the prefrontal cortex, impairing judgment, empathy, and strategic thinking. Largely reversible with real recovery."},
+  {code:"PH",name:"Physical",label:"health & vitality",
+   detail:"The most potent wellbeing intervention available. Sleep, movement, and nutrition are the biological substrate everything else runs on."},
+  {code:"SX",name:"Sexual",label:"intimacy & desire",
+   detail:"Absent from every major wellbeing framework. Fortify names it directly. 46.79% of high-stress workers show sexual difficulty, and 71.8% of partners in affected couples show difficulty themselves."},
+  {code:"RL",name:"Relational",label:"partnership",
+   detail:"Close relationships are biological determinants of health. Your partner's attachment style shapes your own cortisol reactivity and immune function."},
+  {code:"SC",name:"Social",label:"community",
+   detail:"50% of CEOs report loneliness in role; 61% say it affects performance. The prescription is fewer, deeper connections, not more events."},
+  {code:"SP",name:"Spiritual",label:"meaning & purpose",
+   detail:"Not about religion. About whether your life feels like it means something. Purpose in life is the strongest single predictor in Ryff's six-factor wellbeing model."},
+  {code:"EN",name:"Environmental",label:"space & nature",
+   detail:"Your environment regulates your nervous system without your awareness. 120 minutes a week in nature produces measurable wellbeing improvement."},
+  {code:"FI",name:"Financial",label:"security & identity",
+   detail:"Not about wealth. About your relationship with money and what it signals about who you are. At a certain level, compensation becomes identity."}
+];
+const center={x:400,y:400},radius=268;
+domains.forEach((d,i)=>{
+  const a=(-90+i*36)*Math.PI/180;
+  d.x=center.x+radius*Math.cos(a); d.y=center.y+radius*Math.sin(a);
+});
+const keystones=[["FI","ID"],["PH","ME"],["PH","SX"],["SX","RL"]];
+const secondaries=[["PH","CG"],["FI","ME"],["SC","ME"],["SP","ME"]];
+const ambient=[["ID","SP"],["ID","ME"],["ME","CG"],["PH","EN"],["SX","ME"],["RL","SC"],["SC","SP"],["SP","EN"],["FI","SC"],["EN","CG"],["RL","ME"],["ID","RL"],["PH","FI"],["SC","ID"]];
+function connectionsFor(code){
+  const s=new Set();
+  keystones.concat(secondaries,ambient).forEach(([a,b])=>{
+    if(a===code)s.add(b); if(b===code)s.add(a);
+  });
+  return s;
 }
-document.querySelectorAll('[data-opt]').forEach(b=>b.addEventListener('click',()=>go(b.getAttribute('data-opt'))));
+const svg=document.getElementById("netSvg"),NS="http://www.w3.org/2000/svg";
+const wrap=document.getElementById("netWrap");
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let li=0;
+function link(pair,cls){
+  const da=domains.find(d=>d.code===pair[0]),db=domains.find(d=>d.code===pair[1]);
+  const l=document.createElementNS(NS,"line");
+  l.setAttribute("x1",da.x);l.setAttribute("y1",da.y);
+  l.setAttribute("x2",db.x);l.setAttribute("y2",db.y);
+  l.setAttribute("class","net-link"+(cls?" "+cls:""));
+  l.dataset.a=pair[0]; l.dataset.b=pair[1];
+  if(!reduced){
+    const len=Math.hypot(db.x-da.x,db.y-da.y);
+    l.style.strokeDasharray=len; l.style.strokeDashoffset=len;
+    l.style.transition="stroke-dashoffset 1.1s ease "+(li*55)+"ms";
+  }
+  l.style.animationDelay=(li*350)+"ms"; li++;
+  svg.appendChild(l);
+}
+ambient.forEach(p=>link(p,""));
+secondaries.forEach(p=>link(p,"secondary"));
+keystones.forEach(p=>link(p,"keystone"));
+domains.forEach(d=>{
+  const g=document.createElementNS(NS,"g");
+  g.setAttribute("class","net-node-group"); g.dataset.code=d.code;
+  const c=document.createElementNS(NS,"circle");
+  c.setAttribute("cx",d.x);c.setAttribute("cy",d.y);c.setAttribute("r",34);
+  c.setAttribute("class","net-node"); g.appendChild(c);
+  const t=document.createElementNS(NS,"text");
+  t.setAttribute("x",d.x);t.setAttribute("y",d.y);
+  t.setAttribute("class","net-code"); t.textContent=d.code; g.appendChild(t);
+  const ang=Math.atan2(d.y-center.y,d.x-center.x);
+  const cosA=Math.cos(ang),sinA=Math.sin(ang),dist=58;
+  const lx=d.x+cosA*dist; let ly=d.y+sinA*dist;
+  let anchor="middle";
+  if(cosA>0.3)anchor="start"; else if(cosA<-0.3)anchor="end";
+  if(anchor==="middle"){ly+=sinA>0?18:-6}else{ly+=5}
+  const lb=document.createElementNS(NS,"text");
+  lb.setAttribute("x",lx);lb.setAttribute("y",ly);
+  lb.setAttribute("text-anchor",anchor);lb.setAttribute("class","net-label");
+  lb.textContent=d.name; g.appendChild(lb);
+  g.addEventListener("mouseenter",()=>highlight(d.code));
+  g.addEventListener("mouseleave",unhighlight);
+  g.addEventListener("click",e=>{e.stopPropagation();highlight(d.code);openDetail(d)});
+  svg.appendChild(g);
+});
+function highlight(code){
+  const conns=connectionsFor(code);
+  wrap.classList.add("has-hover");
+  svg.querySelectorAll(".net-node-group").forEach(g=>{
+    g.classList.remove("hover","connected");
+    if(g.dataset.code===code)g.classList.add("hover");
+    else if(conns.has(g.dataset.code))g.classList.add("connected");
+  });
+  svg.querySelectorAll(".net-link").forEach(l=>{
+    l.classList.toggle("highlight",l.dataset.a===code||l.dataset.b===code);
+  });
+}
+function unhighlight(){
+  wrap.classList.remove("has-hover");
+  svg.querySelectorAll(".net-node-group").forEach(g=>g.classList.remove("hover","connected"));
+  svg.querySelectorAll(".net-link").forEach(l=>l.classList.remove("highlight"));
+}
+function openDetail(d){
+  document.getElementById("ndCode").textContent=d.code+" · "+d.label;
+  document.getElementById("ndName").textContent=d.name;
+  document.getElementById("ndBody").textContent=d.detail;
+  document.getElementById("netDetail").classList.add("show");
+}
+function closeDetail(){
+  document.getElementById("netDetail").classList.remove("show");
+  unhighlight();
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest(".net-wrap")&&!e.target.closest(".net-detail"))closeDetail();
+});
+/* draw-in, then breathe */
+requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  svg.querySelectorAll(".net-link").forEach(l=>l.style.strokeDashoffset=0);
+  setTimeout(()=>{ if(!reduced) svg.classList.add("live"); },2600);
+}));
+/* ---------- reveals (poll + scroll: pane-safe) ---------- */
 function tick(){
-  const lim = innerHeight*.94;
-  document.querySelectorAll('.opt.on .r:not(.vis)').forEach(el=>{ if(el.getBoundingClientRect().top<lim) el.classList.add('vis'); });
+  const h=innerHeight;
+  document.querySelectorAll(".r:not(.vis), .course:not(.vis)").forEach(el=>{
+    if(el.getBoundingClientRect().top<h*0.88)el.classList.add("vis");
+  });
 }
-addEventListener('scroll',tick,{passive:true}); addEventListener('resize',tick,{passive:true}); setInterval(tick,250); tick();
+addEventListener("scroll",tick,{passive:true});
+setInterval(tick,250); tick();
 </script>
 </body>
 </html>
